@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "github": {
+      "source": "zocomputer/skills",
+      "sourceType": "github",
+      "computedHash": "adddee72720af48c785a06a71fc95ca892a375ed3ef691a79fd60ebfe06df0d6"
+    }
+  }
+}

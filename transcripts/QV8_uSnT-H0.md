@@ -1,0 +1,233 @@
+# 3 Really Scary TRUE Deep Woods Horror Stories
+
+*Mr. Nightmare*
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QV8_uSnT-H0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## Transcript
+
+[0:13](https://youtube.com/watch?v=QV8_uSnT-H0&t=13s)
+
+This is one of those stories I've been sitting on for a really long time. It happened back when I was maybe 25 or 26, way before I met my wife and way before we had kids. I was a completely different person back then. Not in a bad way, just in the sense that I had the kind of free time and risk tolerance that I genuinely can't relate to anymore. I used to do these solo backpacking trips a few times a year, usually somewhere in the Appalachian. I drive out to some remote trail head, hike deep into the back country, way off the trail, and spend a few days completely off the grid. No cell service, no other people, nothing. I loved it. My friends thought I was insane, and honestly, I kind of was. This particular trip was in the Cherokee National Forest, and it changed how I see backpacking forever. I had been out there for two days, and everything had been going perfectly. The weather had been great, the trail was quiet, and I hadn't seen another person since the first morning. That changed pretty quickly, though. On the afternoon of the
+
+---
+
+[1:15](https://youtube.com/watch?v=QV8_uSnT-H0&t=75s)
+
+second day, I noticed dark storm clouds building up to the west. I wasn't too worried at first. I'd hiked through rain plenty of times, and it was never a big deal. But within about an hour, I realized it wasn't going to be a passing shower. The wind picked up hard and the temperature dropped fast enough that I actually stopped to put on another layer. By the time the rain started, I was already looking for a spot to hunker down. The problem was that I was in a pretty exposed section of the trail. As I predicted, it wasn't a light rain. It went from windy to full-on downpour in minutes. The wind was bending smaller trees sideways and I could hear branches cracking and falling in the canopy above me. I started getting genuinely concerned about my safety. Lightning was striking pretty close by and I was hiking at elevation with a metal framed pack on my back. Not ideal. I kept pushing forward, completely soaked at that point. I was scanning the woods on either side of the trail for anything that could pass as shelter. As if by
+
+---
+
+[2:15](https://youtube.com/watch?v=QV8_uSnT-H0&t=135s)
+
+some miracle, I actually saw a structure through the trees off to my left. It was small and dark and partially hidden by the forest, but it was unmistakably man-made. As I got closer, I realized it was a tiny one-story cabin. They looked extremely old, like it could have been a hunting cabin or a homesteaders shelter from decades ago. There was a single window on the side I was approaching. I can't overstate how relieved I was. I practically sprinted over to the thing and pushed the door open. Inside, it was dim but dry. There wasn't much in there, just a chair, a small table, and what looked like a cot frame pushed against the far wall. There was a stone fireplace on the right side that was clogged with old ash and debris. The place honestly smelled really bad, but I didn't care about anything other than stripping out of my soaked clothes and laying down. There wasn't a couch or anything in there, so I literally just picked a spot on the floor and lied down. I was in survival mode at that point, not exploration mode. All I cared
+
+---
+
+[3:17](https://youtube.com/watch?v=QV8_uSnT-H0&t=197s)
+
+about was that I was out of the storm. It wasn't until I'd been inside for maybe 10 or 15 minutes that I started actually looking around. With the storm raging outside, there wasn't much else to do besides flick on a flashlight and snoop. So, that's exactly what I did. There was more stuff in that cabin than I had initially realized. For starters, there was a sleeping bag rolled up in the corner near the cot frame. It didn't look ancient like the rest of the place, which confused me. There were also a couple of cans and water jugs on the table, which made me think someone had been using the place as a base camp of sorts. Maybe another backpacker or a hunter. It wasn't unusual to find stuff like that in remote cabins, but the more I looked around, the more things started bothering me. There were marks on the wall near the door. At first, I thought they were just damage from age or weather, but when I got closer to inspect them, I could see they were scratches. There were dozens of them, some shallow and some deeper. There was no pattern or order to the marks, at
+
+---
+
+[4:18](https://youtube.com/watch?v=QV8_uSnT-H0&t=258s)
+
+least not one I could see. I stepped back and looked at the door itself. The handle was a simple latch, which wasn't unusual. Despite the storm, I opened the door just to get a look at the mechanism. There was a metal bracket on the outside of the frame, which looked like it was designed to hold a padlock. The bracket was on the outside. There was no corresponding latch on the inside. That meant the door could only be locked from the outside. Things only got stranger. I shut the door and started looking around the cabin. The only thing I hadn't checked out yet was the window, so I walked over to it. The glass was still perfectly intact, which surprised me given the apparent age of the place. But then I noticed why. There were screws drilled into the window frame, one in each corner, securing it shut. Those had also been driven in from outside. And around the edges of the frame on the inside, there were more scratches, deep ones. These were unmistakable. They honestly looked like someone had tried to pry the
+
+---
+
+[5:18](https://youtube.com/watch?v=QV8_uSnT-H0&t=318s)
+
+window open with their bare hands. All of it hit me at once. Someone had been kept in this cabin, trapped, as in kept against their will. I should have left right then, and I did consider that, but there was a good part of me that felt like whatever had gone on in that cabin was well in the past. Everything in the cabin looked really old. Even the sleeping bag, which did look on the newer side, admittedly, was rigid and dusty. Plus, the last thing I wanted to do was go back out in that storm again. So, I stayed. I'm not sure how much time passed. Maybe an hour, maybe more. The storm wasn't letting up at all. If anything, it had gotten worse. The rain on the roof was so loud that it was hard to hear much of anything else. That's probably why it took me so long to notice the other sound. I picked up on the scratching or scraping noises from outside somewhere along the left wall of the cabin. At first, I thought it was a branch, but I couldn't remember if there had been branches low enough to even touch the exterior of the cabin. As
+
+---
+
+[6:18](https://youtube.com/watch?v=QV8_uSnT-H0&t=378s)
+
+I was thinking about it, I heard two heavy thumps on the porch. They honestly didn't sound like storm sounds. This time I stood up. I did that thing where you freeze in place and try to focus by staring at a random spot on the wall. I was trying to listen, but if someone was moving out there, it would have been impossible to hear over the storm. I started getting paranoid that those sounds I heard were just a few of many and that the rest had been drowned out by the rain. My eyes drifted over to the window. I couldn't bring myself to look through it. If someone really was out there, they'd probably be looking through it. I stayed in that position for what felt like forever. After a while, I started to relax a bit, thinking I had just been hearing the storm, or at the very worst, an animal poking around the cabin. I was almost ready to forget about everything when I heard something that sent me over the edge. Pressure on the door like someone was leaning their full weight against it from the other side. The wood creaked and the latch rattled once before the
+
+---
+
+[7:20](https://youtube.com/watch?v=QV8_uSnT-H0&t=440s)
+
+pressure released. My heart rate instantly shot back up and that's when something clicked. Why would someone be outside in a storm like this, circling the cabin, tapping on the walls without just coming in? The door wasn't locked. Nothing was stopping them. And then I thought about what I'd found inside the cabin. And it occurred to me that maybe whoever was out there didn't want to come inside. Maybe they wanted me to stay inside. Maybe the whole point was to keep me in there. I don't know if that was the right conclusion or if my mind was just spiraling, but I decided I was leaving right then. I didn't care about the storm. I started moving things into my backpack as fast as I could. I had this sickening feeling that something really bad was about to happen, and I was right. The next few moments were a blur. I was maybe 30 seconds from walking out the door when I heard the sound of glass shattering behind me. I spun around just in time to see something come through the window, and that was all I could see before the whole room erupted in flames. The flames spread so fast that I couldn't even
+
+---
+
+[8:20](https://youtube.com/watch?v=QV8_uSnT-H0&t=500s)
+
+process what was happening. One second, I was standing in a dark room, and the next second, the walls were on fire. The heat hit me like a physical wall, and the door wouldn't budge. It was jammed from the outside. I slammed into it with all my might, and it gave. It collapsed off its hinges and me with it. I scrambled to get back on my feet and I just ran. I couldn't even see. I was just running wildly through the woods and rain trying to put as much distance between myself and that cabin. But before I could get a safe distance away, I felt something tackle me from behind and I was back on the ground. There was a person on top of me and suddenly I was fighting for my life. I clawed and kicked and screamed, but this guy wouldn't get off me. He was yelling too and he kept trying to get me in a chokeold. He was gouging at my eyes and pulling my hair, and I started to feel dizzy, but I managed to push him off. I got back up and kept running, and whoever had just tried to kill me was screaming like a maniac. I looked back
+
+---
+
+[9:20](https://youtube.com/watch?v=QV8_uSnT-H0&t=560s)
+
+twice. I couldn't see my attacker, but I did see the cabin, which was fully engulfed in flames. I think the picture of that fireball is burned into my brain forever. The second time I looked back, the glow was smaller, but still visible through the woods, but I just kept running. For all I knew, I was being chased. I didn't stop until my legs gave out. I found a spot where a couple of large trees had fallen against each other, and there was a narrow gap underneath that blocked most of the rain. I crawled under there and just collapsed. I couldn't feel my body. I don't know if it was the fire, the rain, or the attack. Maybe all three, but I was completely numb. All I did was sit in that crouch position and try to keep breathing. I don't know how many hours passed under those trees, but time lost all meaning. Eventually, I felt some feeling start to re-enter my body, and I told myself it was move or die. Whoever was out there was probably looking for me, and he couldn't have been that far away. So, I got up and started moving through the woods. I didn't know where
+
+---
+
+[10:22](https://youtube.com/watch?v=QV8_uSnT-H0&t=622s)
+
+the trail was, but I didn't really care. I honestly can't tell you how I survived that night, but I did. I stumbled onto a random trail and just followed it. I was soaked and probably bleeding from multiple places, but I just kept trudging on. Eventually, the rain subsided a bit, at least enough for me to figure out where I was. I made it to some random trail head. By that point, the storm had passed. I don't remember too much after that. All I remember is that the first person I saw drove me to a hospital. I had secondderee burns on my left forearm and the back of my neck, and doctors told me I was lucky I hadn't inhaled more smoke than I did. None of it was permanent, but it hurt like hell for a long time afterwards. By the time I was healed and safe at home, I told myself I would never camp or hike alone again. Someone had intentionally set that cabin on fire to kill me. That's the only thing that makes any sense. It was pouring rain, a full-blown thunderstorm, and the roof was metal. There's no way a wooden structure goes up like that that fast, unless the wood
+
+---
+
+[11:22](https://youtube.com/watch?v=QV8_uSnT-H0&t=682s)
+
+had been treated with something beforehand. I gave the police everything or as much as I could, but I could tell they weren't really going to do anything. And to be fair, I wasn't in a charted part of the woods, so it would have been silly to hound them. The only thing I don't understand is the timing of everything. My wife would probably tell you I stopped doing solo trips because I grew up and got more responsible, and she's not entirely wrong, but I honestly never told her about this incident, and I know I'll never go backount trekking again alone. My name is James. This happened maybe seven or eight years ago back when I was in my early 20s and still doing stuff that I probably shouldn't have been doing. I had this friend Charles who was kind of notorious in our friend group for finding cool places to explore like abandoned buildings and old factories. if it was somewhere you weren't supposed to be. Charles had probably already been
+
+---
+
+[12:23](https://youtube.com/watch?v=QV8_uSnT-H0&t=743s)
+
+there and can tell you exactly how to get in. He spent a weird amount of time on Google Earth and these niche herbex forums, and he'd always be hitting the group chat with screenshots of random places he wanted to check out. Most of us would entertain his ideas, but never actually follow through. I was usually the exception. Charles and I had been friends since high school, and I think the reason we got along so well was that we had similar thresholds for risk. While most of our friends would hear his pitches and go, "That sounds insane." I'd hear them and go, "When are we going?" It was a dynamic that led to some great memories and a few situations that I look back on now and genuinely wonder how we made it out unscathed. This story is about one of those situations. One weekend, Charles texted me about a fire lookout tower he'd found deep in some forest not far away from us. I really wish I could remember the name of the forest, but I can't. Charles said it had been decommissioned years ago and was just sitting out there in the middle of nowhere, completely untouched. He didn't tell me how he'd found it, but I
+
+---
+
+[13:23](https://youtube.com/watch?v=QV8_uSnT-H0&t=803s)
+
+didn't want to know. He was convinced we could hike out to it, climb it, and spend the night up there. I was more skeptical. I mean, things like that are usually fenced off or at least protected somehow, but I promised him I'd at least come and check it out. To be fair, the idea of being 70 ft or so up in the middle of a forest with a 360° view sounded incredible to me. We picked a random weekend and made it happen. Charles planned the entire thing out, including the drive, what to pack, and how to find the tower once we were in the woods. It was a 3-hour drive away, and Charles told me the hike would be off the trail, but pretty short, about four miles or so. We drove out early in the morning on Friday and made it into the woods sometime in the afternoon. For some reason, I was kind of expecting us to get lost or at the very least not find the tower, which is exactly why I was all the more astonished when we actually did. Seeing it through the trees for the first time was an insane sight. I remember blurting out, "No way," when I saw how tall it
+
+---
+
+[14:23](https://youtube.com/watch?v=QV8_uSnT-H0&t=863s)
+
+was. I was even more astonished when we got to the base of it and realized it was completely unprotected or fenced off. It was just sitting there in the middle of the woods waiting for us to find it. The cab at the top was this small square room with windows on all four sides. There was a metal staircase that zigzagged up the frame with a section of vertical ladder for the final stretch up to the cab. The whole thing looked like it hadn't been touched in decades. Some of the lower railings were bent or missing and there was graffiti on the support beams near the base. To be completely honest, it did not look like the type of structure anyone would be eager to climb. But Charles was practically giddy. While I was hesitating and debating whether I should try convincing him to back out, he had already started climbing. I yelled at him to be careful, and that got him to slow down. I figured, "What the hell?" and told myself to stop bitching. The two of us made our way up carefully, checking the stairs as we went. Most of them felt solid enough, but there were a few spots where the bolts had rusted through and the steps wobbled. The
+
+---
+
+[15:25](https://youtube.com/watch?v=QV8_uSnT-H0&t=925s)
+
+vertical ladder section near the top was the sketchiest part. It was 20some feet of straight climbing with nothing but a narrow metal cage around it. The adrenaline rush was insane, but that's what Charles lived for. He made it up without any issues. The view from the cab was unreal. You could see for miles in every direction. We had also timed it perfectly. The sun was maybe an hour from setting. Our plan was to camp out for the night and catch the sunrise. There was a decently wide wraparound walkway up there, which is where we decided to chill, at least initially. We cracked a few beers and just enjoyed the view and some conversation. The sun eventually went down and the sky went from orange to purple to dark blue in a matter of minutes. Once the light was gone, the forest below us was just a black mess in every direction. There wasn't a single light in sight. The stars were incredible, easily the best I've ever seen. But being alone out there in the dark was freaking me out a little. It was just weird not being able to see anything despite knowing there
+
+---
+
+[16:25](https://youtube.com/watch?v=QV8_uSnT-H0&t=985s)
+
+was a whole forest below us. Charles could tell I was getting a little antsy and he started messing with me, grabbing my shoulder and stuff like that. But the thing that pissed me off the most was when he smacked his metal water bottle against the side of the tower. It sent this incredibly loud echoing clang in every direction, probably to be heard for miles. The sound was so loud and ominous that I actually got mad at him. I told him I wanted to go inside the cab, and he finally got the hint. There wasn't much in there, by the way. It had clearly been hollowed out ages ago. He said he was going to finish his beer before coming in and joining me, and I was fine with that. I picked a random corner and started setting my sleeping stuff up, but before I could finish, he told me in a very quiet, serious voice to come back outside. Very uncharlike. So, I did. I walked back around to where he was sitting and saw that he was pointing diagonally downwards toward the forest below us. At first, I thought he was just messing with me again, but it only took me a few seconds to realize
+
+---
+
+[17:27](https://youtube.com/watch?v=QV8_uSnT-H0&t=1047s)
+
+what he was pointing at. There was a light down there. It was faint and pretty far away, but it was definitely down there, and it was genuinely horrifying. It was a weaving through the forest at what seemed like walking pace, and my first thought was that it was a person who'd heard the clang from the tower. I don't know why I felt the urge to whisper, but I did. I told him he was stupid for doing that, and we were probably moments away from getting caught or arrested or something. He looked at me with this confused expression before saying, "You think that's a person?" Now, it was my turn to be confused. What the hell was he talking about? I asked him what else it could be, and he said that light was moving way too evenly. He wasn't exactly wrong. The light wasn't swinging or wobbling the way you'd expect someone carrying a lantern or flashlight to be. But then again, it was probably too far away to tell. I didn't say anything after that. Neither did Charles. He just kept staring at this mysterious light as it continued weaving through the forest. Part of me thought it was just some
+
+---
+
+[18:27](https://youtube.com/watch?v=QV8_uSnT-H0&t=1107s)
+
+random hiker that had nothing to do with us. But I knew that was wishful thinking. After a few minutes, it was obvious that the light was getting closer. It was also much clearer that the light was moving perfectly, like it was floating or hovering. Charles asked me what we should do, and I didn't have an answer for him. There wasn't really anything we could do, like, what were we going to do? Climb down? As we were throwing out more theories, the light suddenly zipped forward like it skipped a beat. It was really thick, but for a split second, that light went from steady, even movement to an abrupt zip forward. Then it was back to steady movement again. I started feeling my palm start to sweat, and I could tell Charles was really freaked out, too. I kept trying to convince myself that whoever was down there was just wandering aimlessly through the woods. But again, wishful thinking, they were definitely heading for the tower, and after about 10 minutes, they reached it. At that point, the light was directly below us, and I was bracing myself for someone to yell up to us and announce themselves as police. But no, the light
+
+---
+
+[19:30](https://youtube.com/watch?v=QV8_uSnT-H0&t=1170s)
+
+just stopped moving and stayed in that exact spot right below us. From our vantage point, straight above, we could see the light itself, but not whoever was holding it. Charles and I stared at it for a while. The suspense was killing me, but it must have been killing Charles even more because he again did something I wanted to throw him off the tower for. This guy actually yelled, "Hey, are you good?" down at the light, revealing our presence. I looked at him in horror. I genuinely couldn't believe he would do something so stupid. We didn't get a response though and the light didn't even move. We waited a little bit and then Charles yelled down again, but still nothing. So there we were, 70 ft up in an abandoned fire tower in the middle of nowhere with someone or something blocking our only exit. We were completely trapped. We must have watched that light for 30 minutes straight, whispering to each other every so often. It never moved once. I wasn't worried about being secretive anymore. Charles had burned that bridge a long time ago. So, I did
+
+---
+
+[20:30](https://youtube.com/watch?v=QV8_uSnT-H0&t=1230s)
+
+something I should have done a while ago. I grabbed my flashlight and aimed it straight down at the base of the tower. But even after I did that, I still couldn't see the source of the light. Eventually, we accepted that there was nothing we could do and tried to go back to what we were doing. We went back to talking, but I made sure I never took my eyes off that light for more than a few seconds. Charles thought it was some kind of LED that someone had placed there to mess with us, but who the hell would bother doing that? At some point, Charles said he was going to climb down and check it out, and I told him that was insane. Not only was that inviting trouble, but it was downright stupid and dangerous. As we were arguing about it, I glanced down and realized that I couldn't see the light anymore. There was just darkness and more darkness down there again. I frantically scanned the emptiness below us with my eyes, looking for the light, but it wasn't there anymore. Charles seemed relieved, but I was the opposite. He kept telling me to relax, saying whoever had been there had probably left, but I
+
+---
+
+[21:31](https://youtube.com/watch?v=QV8_uSnT-H0&t=1291s)
+
+was more freaked out than I had been when the light was just sitting there motionlessly. The thought that someone could be down there, and now we couldn't even see them was terrifying to me. Charles reassured me that we'd obviously be able to hear if anyone tried to climb the ladder, which I guessed was true, but I was still really unsettled. Suddenly, I didn't want to be in the open air anymore. I suggested that we wait out the rest of the night from inside the cab, and he agreed. So, we went inside and set up our sleeping bags. Neither of us were going to sleep, though. That was suicide. Staying awake turned out to be the right decision because not 20 minutes after going inside, you started hearing noises. The first ones were all metallic clangs that echoed up through the steel frame of the tower. They weren't footsteps, which I want to be crystal clear about because I was listening specifically for footsteps. And this was not that. It sounded more like someone struck one of the support beams with a wrench or a crowbar. A few minutes later, another one came. This one was more of a grinding sound, like metal
+
+---
+
+[22:32](https://youtube.com/watch?v=QV8_uSnT-H0&t=1352s)
+
+being twisted against metal, and it lasted for a good few seconds before stopping. Charles and I kept looking at each other like we were expecting the other one to do something, but there was nothing we could do. The sounds kept coming from what sounded like different spots, which was what really got me because it meant whatever was causing them was moving down there. The sounds continued on and off for a while. I kept trying to map out the sounds in my head, figure out where they were coming from, how many sources there were, whether they were getting closer or staying at the same level. I couldn't make sense of any of it. Charles and I were whispering to each other about what we'd do if we started hearing someone walking up. I was sitting against the far wall of the cab, facing the windows on the opposite side. Charles was on the opposite side, looking over my shoulder. There were so many windows in there that we didn't feel safe and wanted to be able to see out of all of them. There wasn't much to see, though. They were all pretty dark with the only light being from the stars and the moon. But then I saw something. A dark outline moved across the glass.
+
+---
+
+[23:33](https://youtube.com/watch?v=QV8_uSnT-H0&t=1413s)
+
+My brain couldn't process what I was seeing fast enough, but then it passed in front of the next pain over and that's what did it. I couldn't help but yell and Charles scrambled away from the window. The two of us immediately ran over to the door and pressed our backs against it. If someone tried to come through that door, they were going to have to push through both of us. I kept looking for the figure through the windows, but I couldn't see anything. That was impossible, though. Unless they were crawling on all fours, I should have been able to see them. Charles and I sat up like that for a really long time and I could hear him hyperventilating. What followed was the most tense and terrifying few hours of my life. Charles and I sat there in that exact position like our lives depended on it. By the time the sun started coming up, I was completely exhausted. When it was finally light enough to see, I counted to three and then swung the door open violently, expecting someone to be crouching behind it. But there was no one there. Charles and I ran around the side of it to confirm that and it was clear. I looked down to the base of the
+
+---
+
+[24:35](https://youtube.com/watch?v=QV8_uSnT-H0&t=1475s)
+
+tower and there was nothing down there either. We grabbed our stuff and started descending as fast as we could. We made it about 3/4s of the way down the staircase before Charles stopped in front of me. He just stood on the landing, staring down at the next section of stairs. I looked past him and saw it immediately. An entire section of the staircase was gone. It wasn't just a few steps. I'm talking about an entire section of stairs straight up missing. It was impossible, but we were staring at it. Someone had deconstructed an entire section of staircase during the night while we were sitting directly above them. That must have been what those sounds were. But that didn't make sense. The noises didn't stop until after I had seen the person up there. So, had they really crossed that gap twice in the dark? No way. Plus, there's absolutely no chance someone could have done that without us hearing it. That would have been a lot louder than a few clangs here and there. We stood on that landing for a while trying to figure out what to do. We had to just jump across.
+
+---
+
+[25:35](https://youtube.com/watch?v=QV8_uSnT-H0&t=1535s)
+
+It wasn't that far, but it was still scary. Charles ended up twisting his ankle, but I was fine. We made it the rest of the way down, and that was that. There was no one waiting for us at the bottom. There was actually nothing there at all, including the metal steps that had been removed, at least as far as we could tell. Granted, we didn't look around too much. It didn't make any sense, but we weren't sticking around. I still don't have an explanation for any of it. Not the light, not the sounds, not the figure I saw outside the window, and definitely not how someone managed to remove an entire section of steel staircase in the middle of the night without us hearing it. Every time I see Charles, this is something we still talk about. I go camping alone a few times a year. I've been doing it since I was in my 20s and at this point I'm in my late 30s, so close to 15 years of solo trips at this
+
+---
+
+[26:36](https://youtube.com/watch?v=QV8_uSnT-H0&t=1596s)
+
+point. I know the risks, which is why I carry a rifle. This happened about 2 years ago in the Daniel Boone National Forest in Eastern Kentucky. It's a massive stretch of forest, over 700,000 acres. And if you know where to go, you can hike for days without seeing another person. I had a rough stretch of work and my head wasn't in a great place and I felt like I just needed a few days away from everything. I drove out on a Thursday morning. I parked at a trail head off a forest service road and started hiking. The plan was simple. Three nights in the back country. That was pretty much it. I had my tent, my pack, enough food and water for 4 days, my 308 bolt action that I always bring on solo trips. The first day was exactly what I needed. I covered about 7 miles before finding a flat spot near a creek bed that looked like a good place to camp. I set up my tent, gathered some wood, and had a fire going by the time the sun started going down. I cooked some food, drank a beer, and slept by the fire until it burned down to embers.
+
+---
+
+[27:38](https://youtube.com/watch?v=QV8_uSnT-H0&t=1658s)
+
+The whole time, I didn't see a single person. I fell asleep around 10:00. I woke up at some point in the middle of the night. I'm not sure what woke me. It was more like my brain just switched on for no reason, the way it does sometimes when you're sleeping somewhere unfamiliar. I lay there for a minute and stared at the ceiling of my tent. But as my eyes adjusted, I noticed something. There was a faint orangey glow coming through the walls of my tent. I unzipped the tent flap and looked out. Maybe 200 yd away through the trees, there was a fire. Not a big one. It was about the size of a campfire, but it was definitely there. It was flickering, which is how I knew it was a fire. I watched it for a few minutes, waiting to hear talking or something. I wanted to confirm it wasn't some random forest fire, but after a while of looking at it, I couldn't see or hear anything beyond the fire. I watched it a little while longer just to see if it would grow out of control, but it didn't. I figured it was another camper setup
+
+---
+
+[28:39](https://youtube.com/watch?v=QV8_uSnT-H0&t=1719s)
+
+nearby that I just hadn't noticed during the day. It wasn't impossible, especially since I had gone to sleep relatively early. I figured whoever it was had gone to sleep and left their fire going, which is irresponsible but not uncommon. I watched it for about 5 more minutes and then zipped my tent back up and went to sleep. It didn't bother me too much. When I woke up the next morning, the fire was the first thing I thought about. Not because it had scared me, but because I was curious. I wanted to see who else was out there. Maybe say hi, but mostly to satisfy my curiosity. I packed up my campsite and hiked in the direction where the fire had been. It took me about 10 minutes to reach the area. I was pretty confident I had the right spot. There was a natural clearing that lined up with the angle I'd been looking from. But when I got there, I stopped. There was no fire pit, nor was there a ring of stones or a pile of ash or scorched ground, charred wood, nothing. The ground was completely undisturbed.
+
+---
+
+[29:40](https://youtube.com/watch?v=QV8_uSnT-H0&t=1780s)
+
+I walked the whole clearing, checking for any sign that someone had been there, but there was no signs of life whatsoever. The area was pristine. I stood there for a while, genuinely confused. I was certain I'd seen a fire. It had been a campfire burning clearly for at least 5 minutes while I watched it. And yet, the ground where it should have been looked like no one had set foot there in months. I considered the possibility that I had the wrong spot, but there wasn't another clearing anywhere near the right distance or direction. There wasn't much I could do beyond that, though, so I just moved on. I still had two more nights planned, and I wasn't about to cut my trip short over something silly like that. I hiked for most of the day. The terrain changed as I moved deeper into the forest. The creek bed fell away behind me and the ground started climbing. By midafter afternoon, I was in a denser, older section of the forest where the trees were taller and the canopy was thick enough to block out most of the sky. It was quieter in there, which was nice. I found a good campsite around 4:00. That
+
+---
+
+[30:42](https://youtube.com/watch?v=QV8_uSnT-H0&t=1842s)
+
+evening was uneventful. I dowed my fire a little after 9 and turned in for the night. I don't know what time it was when the sound woke me up, but it was loud enough to pull me out of a dead sleep. I woke up to this distant, enormous cracking sound, like a thick branch being snapped in half, except it kept going. It was violent, and it lasted for maybe 3 or 4 seconds. At the tail end of it, there was a deep, resonant thud that I could quite literally feel in the ground beneath me. I instantly knew what it was. A tree had fallen somewhere deeper in the woods, or at the very least, a very large branch. If you've ever heard the sound of a tree falling before, which I do understand is kind of a rare occurrence. It's amazing and terrifying at the same time. It didn't scare me, per se, but the deafening force and scale of it gave me this crazy adrenaline rush. I lay there in my sleeping bag, trying to figure out what had just caused it. The more I thought about it, the less sense it made. It
+
+---
+
+[31:43](https://youtube.com/watch?v=QV8_uSnT-H0&t=1903s)
+
+wasn't storming, and there was barely any wind. There was nothing I could think of that would have brought a tree down on a night like this. But there was also nothing I could do. I couldn't fall asleep at that point either. My heart was still racing and the adrenaline had me awake. So, I just kind of closed my eyes and waited for it to wear off. But then, not 10 minutes later, it happened again. Only this time, it was much louder. That same gruesome crackling sound followed by a crash of branches and a deafening thud. But this one was close. Not right on top of me, but close enough that the sound was almost disorienting, and it came from a completely different direction than the first one. The first tree had fallen somewhere to the south, and the second one was to my northwest. I sat up immediately. Now I was actually scared. Two trees falling on the same night in two different parts of the forest with no wind and no storm. That was inconceivable. I kept trying to come up with an explanation that made sense. The most
+
+---
+
+[32:45](https://youtube.com/watch?v=QV8_uSnT-H0&t=1965s)
+
+logical thought was that the first one had caused some kind of chain reaction. But that hypothesis didn't account for the fact that the trees fell in completely different parts of the forest. Whatever brought down the first tree had nothing to do with the second one. They were two different events. But that was even more inconceivable. I was sitting there processing all this when I heard something new. Something that took my fear from a medium five to a resounding 10. It was this low and continuous rumbling sound that I can only describe as a cross between a groan and a growl. Like a person clearing their throat, except it didn't stop. It wasn't an animal sound I recognized. I've heard bears. I've heard elk. I've heard bobcats. This wasn't any of those. It sounded like something was making the noise on purpose. And it went on for what felt like a full minute without any break or variation. I did the only thing I could think to do. I grabbed my rifle, chambered around as quietly as I could, and aimed it at the tent flap. At that point, I was full on panicking. I must have sat like that for 20 minutes. The
+
+---
+
+[33:47](https://youtube.com/watch?v=QV8_uSnT-H0&t=2027s)
+
+sound eventually tapered off. It didn't stop abruptly. It kind of faded out like whatever was making it had moved further away. And just like that, the forest was quiet again. I didn't sleep the rest of the night. I don't think I would have been able to if I tried. It was the worst night of my life. As soon as I saw daylight, I got out of the tent. I packed up as quickly as possible, still spooked and extremely unsettled despite being able to see. Once everything was in my pack, I started walking in the direction of the second tree, the louder and closer one. I needed to see it, if only to confirm that I hadn't imagined the whole thing. I had my rifle ready in my hands. So, I found the tree after about 10 minutes. The thing was massive, and its trunk was lying at an angle across a shallow slope. Broken branches and debris were scattered all around it. So, it was real. I really couldn't believe it. I'd been trying to convince myself I had just imagined everything from the night before, but there it was. I needed to keep investigating. I wouldn't have been satisfied leaving
+
+---
+
+[34:47](https://youtube.com/watch?v=QV8_uSnT-H0&t=2087s)
+
+without knowing what had caused the fall. I walked over the stump, which was about 3 ft high. The wood where it had broken was pale and fresh, but the break wasn't clean. It wasn't the kind of jagged, splintered fracture you get from wind stress or root failure. The wood around the breakpoint had been torn apart in a way that I had never seen before. Parts of the stump looked like they'd been gouged. I really don't know how else to describe it. There were long, irregular grooves running through the wood at different angles, and it looked like some of them were up to an inch deep at least. The wood genuinely looked like it had been stripped and chewed rather than cut or snapped. The more I looked, the more I noticed. Some of the bark around the base had been peeled away in long strips, and the exposed wood underneath had that same gouged, chewed- up look. I can't pretend I knew what I was looking at because I didn't. I'd seen beaver damage before, and this was not that. Beavers leave clean cuts. I'd seen woodpecker damage, and this wasn't that either. This was aggressive, messy, and covered way too
+
+---
+
+[35:48](https://youtube.com/watch?v=QV8_uSnT-H0&t=2148s)
+
+much surface area to be any animal I could think of. The tree hadn't fallen because it was dead or because the wind knocked it over. Something had worked on that trunk until it came down. And suddenly, I felt this really nasty feeling in my gut. I needed to leave. I stopped examining the tree and started backing away. But as I was turning to leave, something near one of the tree branches caught my eye. There was a small cluster of items sitting on the ground. If it weren't for the fact that they looked man-made, I wouldn't have even bothered checking them out. As soon as I saw what they were, I lost my It was a blue bandana and a carabiner, and they were both my items. I instantly started digging through my pack and confirmed those two items were missing. In that moment, I grabbed my stuff, shoved it in my backpack, and ran. I didn't know if running was the right decision, if that would have attracted attention to me, but I did anyway. I just needed to get out of those woods. I got tired after a while under the weight of all my stuff, but I
+
+---
+
+[36:48](https://youtube.com/watch?v=QV8_uSnT-H0&t=2208s)
+
+moved as fast as I could. The hike back took me most of the day, and the entire time I felt like I was being stalked or watched. I felt like something was going to jump out from somewhere any second. I kept my rifle in my hands the entire time. I made it back to my car around 3:00 in the afternoon. I drove out of there so fast, despite my exhaustion. The first thing I did when I got to a safe distance away was call the police. I don't think they took me very seriously, but I didn't care. I also knew there probably wasn't much they could do, but I didn't care about that either. I was pretty messed up for days afterward. None of it made any sense whatsoever. What I couldn't get over was the fact that my stuff had been rummaged through. Something had either stalked me through the woods or knew where I was the entire time. That unexplainable fire from the first night must have had something to do with it. There's no way that was a coincidence. and those trees. I still have no explanation for what could have cut them down. I genuinely don't think it was anything human, but as for what animal it could have been, I
+
+---
+
+[37:49](https://youtube.com/watch?v=QV8_uSnT-H0&t=2269s)
+
+have no idea. I still go camping, believe it or not, but this is something that I think will hang over me forever.

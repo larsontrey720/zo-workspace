@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "temp-mail": {
+      "command": "npx @pragyanm/temp-mail-mcp-server@latest"
+    }
+  },
+  "imports": []
+}
