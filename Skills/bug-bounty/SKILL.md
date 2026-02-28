@@ -603,3 +603,42 @@ sqlmap -u 'http://target.com/search?q=test' --os-shell
 - Input validation
 - WAF as extra layer
 
+
+## IDOR Testing Techniques
+
+**Mindset**: Every numeric/string ID that references an object = potential ticket to god-mode.
+
+### Systematic Testing:
+
+1. **Basic ID Manipulation**
+   - Change ID in URL: `/user/1337` → `/user/1338` (vertical + horizontal)
+   - Change IDs in API requests: `{"user_id": 1337}` → `{"user_id": 1338}`
+
+2. **Advanced Techniques**
+   - Array wrapping: `id=1337` → `id[]=1337&id[]=1338`
+   - JSON body: add extra parameters like `{"role":"admin"}` or `{"is_owner":true}`
+   - GUID/UUID flipping (last 4 chars usually sequential)
+   - Base64 decode → increment → re-encode
+   - Hash manipulation: crack with known plaintext (MD5(1337) etc.)
+
+3. **Automation**
+   - Burp Intruder + custom wordlist (1..999999, UUID v4 patterns)
+   - Look for 200 OK with different user data
+
+### Key Endpoints to Test:
+- `/api/user/{id}`
+- `/profile/{id}/edit`
+- `/api/orders/{id}`
+- `/api/records/{id}/delete`
+- Any PUT/PATCH/DELETE with IDOR potential
+
+### Test Cases:
+- **Horizontal**: Access another user's same-level resource
+- **Vertical**: Access admin/superuser resources as regular user
+- **Object-level**: Access another object's data (e.g., private document)
+
+### Look For:
+- 200 OK with different user data
+- Different response size
+- Extra fields in JSON response
+- Status code changes (sometimes 403 with admin data inside)
