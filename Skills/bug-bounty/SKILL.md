@@ -931,3 +931,62 @@ Send deeply nested queries to cause DoS:
 - Look for query complexity analysis settings
 - Test for IDOR in nested queries
 - Check if mutations accept arbitrary input
+
+## Race Condition Exploitation
+
+From: Rhynorater, Bug Bounty Methodology Expert
+
+### What Are Race Conditions?
+When multiple requests execute simultaneously and the server fails to properly sequence them, allowing bypass of validation, rate limits, or business logic.
+
+### High-Value Targets
+1. **Negative balance** - Withdraw/deposit race to go negative
+2. **Coupon stacking** - Apply multiple coupons meant for single use
+3. **2FA bypass** - Multiple OTP submissions before lockout
+4. **Wallet overflow** - Concurrency in crypto/fiat balance updates
+
+### Tools for Race Conditions
+
+#### racepwn (Turbo-Intruder Fork)
+- Enhanced version of Turbo-Intruder for race conditions
+- Python-based with asyncio support
+- GitHub: https://github.com/1n-br0/racepwn
+
+#### asyncio + httpx
+```python
+import asyncio
+import httpx
+
+async def race_attack():
+    async with httpx.AsyncClient() as client:
+        tasks = [
+            client.post(url, data=payload)
+            for _ in range(10)
+        ]
+        await asyncio.gather(*tasks)
+
+asyncio.run(race_attack())
+```
+
+#### Burp Turbo Intruder
+- Send 50+ requests with 0.01s clusters
+- Enable "Neighbour" analysis for timing windows
+- Throttle until you find the sweet spot
+
+### The Billion Dollar Bug
+Simultaneous requests can:
+- Bypass validation logic (check-then-act races)
+- Circumvent rate limits entirely
+- Create duplicate transactions
+- Influence lottery/raffle outcomes
+
+### Key Techniques
+1. **Time-of-check to time-of-use (TOCTOU)** - Race between validation and execution
+2. **Parallel processing exploits** - Multiple requests hit backend simultaneously
+3. **Database locking bypasses** - Exploit transaction isolation levels
+
+### Testing Methodology
+1. Identify sensitive endpoints (balance, payments, auth)
+2. Send concurrent requests (5-50 simultaneous)
+3. Analyze response ordering and final state
+4. Iterate with different payload combinations
