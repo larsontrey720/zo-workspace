@@ -771,3 +771,16 @@ Internal network = your playground.
 - State parameter removal
 - Token leakage via referrer
 
+
+## OAuth Vulnerabilities
+### Redirect URI Chaos
+- Open redirect: redirect_uri=https://target.com?redirect_uri=https://evil.com
+- Subdomain wildcard: redirect_uri=https://target.com.evil.com
+- response_type=token in GET (steal token via referrer)
+- PKCE bypass: send code_challenge but don't verify
+- State parameter missing → CSRF on auth
+- Implicit flow + fragment stealing access token
+
+### Tools
+- oauth2c
+- Auth0 misconfig scanner
