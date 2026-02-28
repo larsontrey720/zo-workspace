@@ -784,3 +784,34 @@ Internal network = your playground.
 ### Tools
 - oauth2c
 - Auth0 misconfig scanner
+
+## JWT Attacks (JSON Web Token)
+Always check these 5 things in order:
+
+### 1. Algorithm Confusion
+- alg: none → remove signature, set alg: none
+- Tool: jwt_tool -S none -p "" 
+
+### 2. Weak Secret
+- alg: HS256 + weak secret → jwt_tool -d wordlist.txt
+- Tool: hashcat, jwt_tool -d
+
+### 3. Kid Parameter Injection
+- {"kid":"../../dev/null"} → path traversal
+- {"kid":"file:///etc/passwd"} → LFI
+- SQL injection in kid parameter
+
+### 4. JWK / JKU SSRF
+- jku parameter → SSRF to malicious JWKS
+- x5u parameter → SSRF to malicious X.509 cert
+- Tool: jwt_tool -J
+
+### 5. Claims Manipulation
+- aud / iss manipulation
+- exp tampering (iat + nbf tricks)
+- null JWT handling
+
+### Tools
+- jwt_tool (python3 -m pip install jwt_tool)
+- c-jwt-cracker
+- hashcat (HMAC mode)
