@@ -16364,4 +16364,3612 @@ wapiti -u kambegoye.com --continue
 
 ### nikto - Web Server Scanner
 **Location**: `/usr/bin/nikto`
-**
+**Purpose**: Scan web servers for dangerous files, outdated software, configuration issues
+
+**Use Cases**:
+```bash
+# Basic scan
+nikto -h kambegoye.com
+
+# HTTPS scan
+nikto -h https://kambegoye.com
+
+# With port
+nikto -h kambegoye.com -p 8080
+
+# Multiple ports
+nikto -h kambegoye.com -p 80,443,8080
+
+# Scan with authentication
+nikto -h kambegoye.com -id admin:secret
+
+# Cookies
+nikto -h kambegoye.com -cookie "PHPSESSID=xxx"
+
+# Tunings (reduce noise)
+nikto -h kambegoye.com -Tuning 1  # Interesting files
+nikto -h kambegoye.com -Tuning 2  # Misconfiguration
+nikto -h kambegoye.com -Tuning 3  # Information disclosure
+nikto -h kambegoye.com -Tuning x  # All
+
+# Output formats
+nikto -h kambegoye.com -o results.txt
+nikto -h kambegoye.com -Format json -o results.json
+
+# Pause between requests
+nikto -h kambegoye.com -Pause 2
+
+# Verbose
+nikto -h kambegoye.com -v
+
+# Update plugins
+nikto -update
+
+# List all tests
+nikto -list-plugins
+```
+
+**Tuning Options**:
+- `1` - Interesting files
+- `2` - Misconfiguration
+- `3` - Information disclosure
+- `4` - Injection (XSS, etc.)
+- `5` - Remote file retrieval
+- `6` - Denial of service
+- `7` - Remote file retrieval - IIS
+- `8` - Command execution - remote
+- `9` - SQL Injection
+- `0` - File upload
+- `a` - Authentication bypass
+- `b` - Software identification
+- `c` - Source code disclosure
+- `d` - Path traversal
+- `e` - Logic error
+
+**Common Findings**:
+- Default/admin files (/admin, /phpmyadmin)
+- Outdated software versions
+- Missing security headers
+- HTTP methods enabled (TRACE, OPTIONS)
+- Sensitive info in headers
+- SSL/TLS issues
+
+**Tips**:
+- Use `-Tuning x` for comprehensive scan
+- Check `-mutate` for directory brute force
+- Combine with whatweb for tech identification
+- Filter false positives with `-IgnoreCode`
+
+---
+
+## Quick Reference - New Tools
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| whatweb | `whatweb target.com` | Technology fingerprinting |
+| httpie | `http GET target.com` | Better HTTP client |
+| wapiti | `wapiti -u target.com` | Full vulnerability scanner |
+| nikto | `nikto -h target.com` | Web server scanner |
+
+## Additional Web Tools (Just Installed)
+
+### whatweb - Technology Fingerprinting
+**Location**: `/usr/bin/whatweb`
+**Purpose**: Identify technologies used by web servers (CMS, frameworks, libraries)
+
+**Use Cases**:
+```bash
+# Basic scan
+whatweb kambegoye.com
+
+# Aggressive scan (more plugins)
+whatweb kambegoye.com --aggression=3
+
+# Scan multiple targets
+whatweb target1.com target2.com --log-xml=results.xml
+
+# Quick scan with minimal plugins
+whatweb kambegoye.com --quick
+
+# Detailed output
+whatweb kambegoye.com -v
+
+# Scan with specific plugins
+whatweb kambegoye.com --plugins=nginx,php
+
+# JSON output
+whatweb kambegoye.com --log-json=results.json
+
+# Custom wordlist
+whatweb --input-file=targets.txt
+```
+
+**Common Plugins**:
+- `nginx`, `apache`, `iis` - Web servers
+- `php`, `asp`, `jsp` - Scripting languages
+- `wordpress`, `drupal`, `joomla` - CMS
+- `jquery`, `react`, `vue` - JS frameworks
+- `aws-s3`, `google-analytics` - Cloud/CDN
+
+**Tips**:
+- Use `--aggression=3` for deeper fingerprinting
+- Combine with nuclei for targeted vulnerability scanning
+- Check for outdated versions (known CVEs)
+
+---
+
+### httpie - Human-Friendly HTTP Client
+**Location**: `/usr/bin/http`
+**Purpose**: Intuitive replacement for curl with better syntax and JSON support
+
+**Use Cases**:
+```bash
+# Basic GET request
+http kambegoye.com
+
+# POST with JSON data
+http POST kambegoye.com/api/login username=admin password=secret
+
+# With headers
+http GET kambegoye.com Authorization:"Bearer token"
+
+# Form data
+http -f POST kambegoye.com/search q=test category=api
+
+# Download file
+http -d kambegoye.com/image.jpg
+
+# Upload file
+http -f POST kambegoye.com/upload file@image.jpg
+
+# Follow redirects
+http --follow kambegoye.com
+
+# Timeout
+http --timeout=30 kambegoye.com
+
+# Verbose (show request/response)
+http -v kambegoye.com
+
+# Session handling
+http --session=auth kambegoye.com/login u=admin p=pass
+http --session=auth kambegoye.com/secure
+
+# Proxy support
+http --proxy=http://proxy:8080 kambegoye.com
+```
+
+**Advantages over curl**:
+- Automatic JSON formatting
+- Readable colorized output
+- Session persistence
+- Simpler syntax
+
+**Tips for Bug Bounty**:
+- Use `http -v` to see exact headers being sent
+- Test various HTTP methods (PUT, DELETE, PATCH)
+- Check for HTTP parameter pollution
+- Test HTTP desync attacks
+
+---
+
+### wapiti - Full Web Vulnerability Scanner
+**Location**: `/usr/bin/wapiti`
+**Purpose**: Comprehensive web application vulnerability scanner
+
+**Use Cases**:
+```bash
+# Basic scan
+wapiti -u kambegoye.com
+
+# Scan with specific modules
+wapiti -u kambegoye.com --modules struts,sql
+
+# Full scan with all modules
+wapiti -u kambegoye.com --modules all
+
+# Scan with authentication
+wapiti -u kambegoye.com --auth-type basic --auth-cred admin:secret
+wapiti -u kambegoye.com --form-cred "http://target.com/login:username=admin&password=secret"
+
+# With cookies
+wapiti -u kambegoye.com --cookie "PHPSESSID=xxx"
+
+# Crawl depth
+wapiti -u kambegoye.com --depth 3
+
+# Output formats
+wapiti -u kambegoye.com -f json -o results/
+wapiti -u kambegoye.com -f html -o report.html
+
+# Scan specific paths only
+wapita -u kambegoye.com --scope "kambegoye.com/api/*"
+
+# Exclude paths
+wapiti -u kambegoye.com --exclude "logout,admin"
+
+# Passive scan (no exploitation)
+wapiti -u kambegoye.com --flush-session
+
+# Continue interrupted scan
+wapiti -u kambegoye.com --continue
+```
+
+**Vulnerability Modules**:
+- `backup` - Backup files disclosure
+- `blindsql` - Blind SQL injection
+- `busqueda` - Directory traversal
+- `crlf` - CRLF injection
+- `exec` - Command execution
+- `file` - File handling issues
+- `htaccess` - Misconfigured htaccess
+- `nikto` - Nikto integration
+- `sql` - SQL injection
+- `ssrf` - Server-side request forgery
+- `xss` - Cross-site scripting
+- `xxe` - XML external entity
+
+**Tips**:
+- Use `--scope` to stay within target
+- Scan with and without authentication
+- Check JSON output for automation
+- Combine with nuclei for validation
+
+---
+
+### nikto - Web Server Scanner
+**Location**: `/usr/bin/nikto`
+**Purpose**: Scan web servers for dangerous files, outdated software, configuration issues
+
+**Use Cases**:
+```bash
+# Basic scan
+nikto -h kambegoye.com
+
+# HTTPS scan
+nikto -h https://kambegoye.com
+
+# With port
+nikto -h kambegoye.com -p 8080
+
+# Multiple ports
+nikto -h kambegoye.com -p 80,443,8080
+
+# Scan with authentication
+nikto -h kambegoye.com -id admin:secret
+
+# Cookies
+nikto -h kambegoye.com -cookie "PHPSESSID=xxx"
+
+# Tunings (reduce noise)
+nikto -h kambegoye.com -Tuning 1  # Interesting files
+nikto -h kambegoye.com -Tuning 2  # Misconfiguration
+nikto -h kambegoye.com -Tuning 3  # Information disclosure
+nikto -h kambegoye.com -Tuning x  # All
+
+# Output formats
+nikto -h kambegoye.com -o results.txt
+nikto -h kambegoye.com -Format json -o results.json
+
+# Pause between requests
+nikto -h kambegoye.com -Pause 2
+
+# Verbose
+nikto -h kambegoye.com -v
+
+# Update plugins
+nikto -update
+
+# List all tests
+nikto -list-plugins
+```
+
+**Tuning Options**:
+- `1` - Interesting files
+- `2` - Misconfiguration
+- `3` - Information disclosure
+- `4` - Injection (XSS, etc.)
+- `5` - Remote file retrieval
+- `6` - Denial of service
+- `7` - Remote file retrieval - IIS
+- `8` - Command execution - remote
+- `9` - SQL Injection
+- `0` - File upload
+- `a` - Authentication bypass
+- `b` - Software identification
+- `c` - Source code disclosure
+- `d` - Path traversal
+- `e` - Logic error
+
+**Common Findings**:
+- Default/admin files (/admin, /phpmyadmin)
+- Outdated software versions
+- Missing security headers
+- HTTP methods enabled (TRACE, OPTIONS)
+- Sensitive info in headers
+- SSL/TLS issues
+
+**Tips**:
+- Use `-Tuning x` for comprehensive scan
+- Check `-mutate` for directory brute force
+- Combine with whatweb for tech identification
+- Filter false positives with `-IgnoreCode`
+
+---
+
+## Quick Reference - New Tools
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| whatweb | `whatweb target.com` | Technology fingerprinting |
+| httpie | `http GET target.com` | Better HTTP client |
+| wapiti | `wapiti -u target.com` | Full vulnerability scanner |
+| nikto | `nikto -h target.com` | Web server scanner |
+
+## Additional Web Tools (Just Installed)
+
+### whatweb - Technology Fingerprinting
+**Location**: `/usr/bin/whatweb`
+**Purpose**: Identify technologies used by web servers (CMS, frameworks, libraries)
+
+**Use Cases**:
+```bash
+# Basic scan
+whatweb kambegoye.com
+
+# Aggressive scan (more plugins)
+whatweb kambegoye.com --aggression=3
+
+# Scan multiple targets
+whatweb target1.com target2.com --log-xml=results.xml
+
+# Quick scan with minimal plugins
+whatweb kambegoye.com --quick
+
+# Detailed output
+whatweb kambegoye.com -v
+
+# Scan with specific plugins
+whatweb kambegoye.com --plugins=nginx,php
+
+# JSON output
+whatweb kambegoye.com --log-json=results.json
+
+# Custom wordlist
+whatweb --input-file=targets.txt
+```
+
+**Common Plugins**:
+- `nginx`, `apache`, `iis` - Web servers
+- `php`, `asp`, `jsp` - Scripting languages
+- `wordpress`, `drupal`, `joomla` - CMS
+- `jquery`, `react`, `vue` - JS frameworks
+- `aws-s3`, `google-analytics` - Cloud/CDN
+
+**Tips**:
+- Use `--aggression=3` for deeper fingerprinting
+- Combine with nuclei for targeted vulnerability scanning
+- Check for outdated versions (known CVEs)
+
+---
+
+### httpie - Human-Friendly HTTP Client
+**Location**: `/usr/bin/http`
+**Purpose**: Intuitive replacement for curl with better syntax and JSON support
+
+**Use Cases**:
+```bash
+# Basic GET request
+http kambegoye.com
+
+# POST with JSON data
+http POST kambegoye.com/api/login username=admin password=secret
+
+# With headers
+http GET kambegoye.com Authorization:"Bearer token"
+
+# Form data
+http -f POST kambegoye.com/search q=test category=api
+
+# Download file
+http -d kambegoye.com/image.jpg
+
+# Upload file
+http -f POST kambegoye.com/upload file@image.jpg
+
+# Follow redirects
+http --follow kambegoye.com
+
+# Timeout
+http --timeout=30 kambegoye.com
+
+# Verbose (show request/response)
+http -v kambegoye.com
+
+# Session handling
+http --session=auth kambegoye.com/login u=admin p=pass
+http --session=auth kambegoye.com/secure
+
+# Proxy support
+http --proxy=http://proxy:8080 kambegoye.com
+```
+
+**Advantages over curl**:
+- Automatic JSON formatting
+- Readable colorized output
+- Session persistence
+- Simpler syntax
+
+**Tips for Bug Bounty**:
+- Use `http -v` to see exact headers being sent
+- Test various HTTP methods (PUT, DELETE, PATCH)
+- Check for HTTP parameter pollution
+- Test HTTP desync attacks
+
+---
+
+### wapiti - Full Web Vulnerability Scanner
+**Location**: `/usr/bin/wapiti`
+**Purpose**: Comprehensive web application vulnerability scanner
+
+**Use Cases**:
+```bash
+# Basic scan
+wapiti -u kambegoye.com
+
+# Scan with specific modules
+wapiti -u kambegoye.com --modules struts,sql
+
+# Full scan with all modules
+wapiti -u kambegoye.com --modules all
+
+# Scan with authentication
+wapiti -u kambegoye.com --auth-type basic --auth-cred admin:secret
+wapiti -u kambegoye.com --form-cred "http://target.com/login:username=admin&password=secret"
+
+# With cookies
+wapiti -u kambegoye.com --cookie "PHPSESSID=xxx"
+
+# Crawl depth
+wapiti -u kambegoye.com --depth 3
+
+# Output formats
+wapiti -u kambegoye.com -f json -o results/
+wapiti -u kambegoye.com -f html -o report.html
+
+# Scan specific paths only
+wapita -u kambegoye.com --scope "kambegoye.com/api/*"
+
+# Exclude paths
+wapiti -u kambegoye.com --exclude "logout,admin"
+
+# Passive scan (no exploitation)
+wapiti -u kambegoye.com --flush-session
+
+# Continue interrupted scan
+wapiti -u kambegoye.com --continue
+```
+
+**Vulnerability Modules**:
+- `backup` - Backup files disclosure
+- `blindsql` - Blind SQL injection
+- `busqueda` - Directory traversal
+- `crlf` - CRLF injection
+- `exec` - Command execution
+- `file` - File handling issues
+- `htaccess` - Misconfigured htaccess
+- `nikto` - Nikto integration
+- `sql` - SQL injection
+- `ssrf` - Server-side request forgery
+- `xss` - Cross-site scripting
+- `xxe` - XML external entity
+
+**Tips**:
+- Use `--scope` to stay within target
+- Scan with and without authentication
+- Check JSON output for automation
+- Combine with nuclei for validation
+
+---
+
+### nikto - Web Server Scanner
+**Location**: `/usr/bin/nikto`
+**Purpose**: Scan web servers for dangerous files, outdated software, configuration issues
+
+**Use Cases**:
+```bash
+# Basic scan
+nikto -h kambegoye.com
+
+# HTTPS scan
+nikto -h https://kambegoye.com
+
+# With port
+nikto -h kambegoye.com -p 8080
+
+# Multiple ports
+nikto -h kambegoye.com -p 80,443,8080
+
+# Scan with authentication
+nikto -h kambegoye.com -id admin:secret
+
+# Cookies
+nikto -h kambegoye.com -cookie "PHPSESSID=xxx"
+
+# Tunings (reduce noise)
+nikto -h kambegoye.com -Tuning 1  # Interesting files
+nikto -h kambegoye.com -Tuning 2  # Misconfiguration
+nikto -h kambegoye.com -Tuning 3  # Information disclosure
+nikto -h kambegoye.com -Tuning x  # All
+
+# Output formats
+nikto -h kambegoye.com -o results.txt
+nikto -h kambegoye.com -Format json -o results.json
+
+# Pause between requests
+nikto -h kambegoye.com -Pause 2
+
+# Verbose
+nikto -h kambegoye.com -v
+
+# Update plugins
+nikto -update
+
+# List all tests
+nikto -list-plugins
+```
+
+**Tuning Options**:
+- `1` - Interesting files
+- `2` - Misconfiguration
+- `3` - Information disclosure
+- `4` - Injection (XSS, etc.)
+- `5` - Remote file retrieval
+- `6` - Denial of service
+- `7` - Remote file retrieval - IIS
+- `8` - Command execution - remote
+- `9` - SQL Injection
+- `0` - File upload
+- `a` - Authentication bypass
+- `b` - Software identification
+- `c` - Source code disclosure
+- `d` - Path traversal
+- `e` - Logic error
+
+**Common Findings**:
+- Default/admin files (/admin, /phpmyadmin)
+- Outdated software versions
+- Missing security headers
+- HTTP methods enabled (TRACE, OPTIONS)
+- Sensitive info in headers
+- SSL/TLS issues
+
+**Tips**:
+- Use `-Tuning x` for comprehensive scan
+- Check `-mutate` for directory brute force
+- Combine with whatweb for tech identification
+- Filter false positives with `-IgnoreCode`
+
+---
+
+## Quick Reference - New Tools
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| whatweb | `whatweb target.com` | Technology fingerprinting |
+| httpie | `http GET target.com` | Better HTTP client |
+| wapiti | `wapiti -u target.com` | Full vulnerability scanner |
+| nikto | `nikto -h target.com` | Web server scanner |
+
+## Additional Web Tools (Just Installed)
+
+### whatweb - Technology Fingerprinting
+**Location**: `/usr/bin/whatweb`
+**Purpose**: Identify technologies used by web servers (CMS, frameworks, libraries)
+
+**Use Cases**:
+```bash
+# Basic scan
+whatweb kambegoye.com
+
+# Aggressive scan (more plugins)
+whatweb kambegoye.com --aggression=3
+
+# Scan multiple targets
+whatweb target1.com target2.com --log-xml=results.xml
+
+# Quick scan with minimal plugins
+whatweb kambegoye.com --quick
+
+# Detailed output
+whatweb kambegoye.com -v
+
+# Scan with specific plugins
+whatweb kambegoye.com --plugins=nginx,php
+
+# JSON output
+whatweb kambegoye.com --log-json=results.json
+
+# Custom wordlist
+whatweb --input-file=targets.txt
+```
+
+**Common Plugins**:
+- `nginx`, `apache`, `iis` - Web servers
+- `php`, `asp`, `jsp` - Scripting languages
+- `wordpress`, `drupal`, `joomla` - CMS
+- `jquery`, `react`, `vue` - JS frameworks
+- `aws-s3`, `google-analytics` - Cloud/CDN
+
+**Tips**:
+- Use `--aggression=3` for deeper fingerprinting
+- Combine with nuclei for targeted vulnerability scanning
+- Check for outdated versions (known CVEs)
+
+---
+
+### httpie - Human-Friendly HTTP Client
+**Location**: `/usr/bin/http`
+**Purpose**: Intuitive replacement for curl with better syntax and JSON support
+
+**Use Cases**:
+```bash
+# Basic GET request
+http kambegoye.com
+
+# POST with JSON data
+http POST kambegoye.com/api/login username=admin password=secret
+
+# With headers
+http GET kambegoye.com Authorization:"Bearer token"
+
+# Form data
+http -f POST kambegoye.com/search q=test category=api
+
+# Download file
+http -d kambegoye.com/image.jpg
+
+# Upload file
+http -f POST kambegoye.com/upload file@image.jpg
+
+# Follow redirects
+http --follow kambegoye.com
+
+# Timeout
+http --timeout=30 kambegoye.com
+
+# Verbose (show request/response)
+http -v kambegoye.com
+
+# Session handling
+http --session=auth kambegoye.com/login u=admin p=pass
+http --session=auth kambegoye.com/secure
+
+# Proxy support
+http --proxy=http://proxy:8080 kambegoye.com
+```
+
+**Advantages over curl**:
+- Automatic JSON formatting
+- Readable colorized output
+- Session persistence
+- Simpler syntax
+
+**Tips for Bug Bounty**:
+- Use `http -v` to see exact headers being sent
+- Test various HTTP methods (PUT, DELETE, PATCH)
+- Check for HTTP parameter pollution
+- Test HTTP desync attacks
+
+---
+
+### wapiti - Full Web Vulnerability Scanner
+**Location**: `/usr/bin/wapiti`
+**Purpose**: Comprehensive web application vulnerability scanner
+
+**Use Cases**:
+```bash
+# Basic scan
+wapiti -u kambegoye.com
+
+# Scan with specific modules
+wapiti -u kambegoye.com --modules struts,sql
+
+# Full scan with all modules
+wapiti -u kambegoye.com --modules all
+
+# Scan with authentication
+wapiti -u kambegoye.com --auth-type basic --auth-cred admin:secret
+wapiti -u kambegoye.com --form-cred "http://target.com/login:username=admin&password=secret"
+
+# With cookies
+wapiti -u kambegoye.com --cookie "PHPSESSID=xxx"
+
+# Crawl depth
+wapiti -u kambegoye.com --depth 3
+
+# Output formats
+wapiti -u kambegoye.com -f json -o results/
+wapiti -u kambegoye.com -f html -o report.html
+
+# Scan specific paths only
+wapita -u kambegoye.com --scope "kambegoye.com/api/*"
+
+# Exclude paths
+wapiti -u kambegoye.com --exclude "logout,admin"
+
+# Passive scan (no exploitation)
+wapiti -u kambegoye.com --flush-session
+
+# Continue interrupted scan
+wapiti -u kambegoye.com --continue
+```
+
+**Vulnerability Modules**:
+- `backup` - Backup files disclosure
+- `blindsql` - Blind SQL injection
+- `busqueda` - Directory traversal
+- `crlf` - CRLF injection
+- `exec` - Command execution
+- `file` - File handling issues
+- `htaccess` - Misconfigured htaccess
+- `nikto` - Nikto integration
+- `sql` - SQL injection
+- `ssrf` - Server-side request forgery
+- `xss` - Cross-site scripting
+- `xxe` - XML external entity
+
+**Tips**:
+- Use `--scope` to stay within target
+- Scan with and without authentication
+- Check JSON output for automation
+- Combine with nuclei for validation
+
+---
+
+### nikto - Web Server Scanner
+**Location**: `/usr/bin/nikto`
+**Purpose**: Scan web servers for dangerous files, outdated software, configuration issues
+
+**Use Cases**:
+```bash
+# Basic scan
+nikto -h kambegoye.com
+
+# HTTPS scan
+nikto -h https://kambegoye.com
+
+# With port
+nikto -h kambegoye.com -p 8080
+
+# Multiple ports
+nikto -h kambegoye.com -p 80,443,8080
+
+# Scan with authentication
+nikto -h kambegoye.com -id admin:secret
+
+# Cookies
+nikto -h kambegoye.com -cookie "PHPSESSID=xxx"
+
+# Tunings (reduce noise)
+nikto -h kambegoye.com -Tuning 1  # Interesting files
+nikto -h kambegoye.com -Tuning 2  # Misconfiguration
+nikto -h kambegoye.com -Tuning 3  # Information disclosure
+nikto -h kambegoye.com -Tuning x  # All
+
+# Output formats
+nikto -h kambegoye.com -o results.txt
+nikto -h kambegoye.com -Format json -o results.json
+
+# Pause between requests
+nikto -h kambegoye.com -Pause 2
+
+# Verbose
+nikto -h kambegoye.com -v
+
+# Update plugins
+nikto -update
+
+# List all tests
+nikto -list-plugins
+```
+
+**Tuning Options**:
+- `1` - Interesting files
+- `2` - Misconfiguration
+- `3` - Information disclosure
+- `4` - Injection (XSS, etc.)
+- `5` - Remote file retrieval
+- `6` - Denial of service
+- `7` - Remote file retrieval - IIS
+- `8` - Command execution - remote
+- `9` - SQL Injection
+- `0` - File upload
+- `a` - Authentication bypass
+- `b` - Software identification
+- `c` - Source code disclosure
+- `d` - Path traversal
+- `e` - Logic error
+
+**Common Findings**:
+- Default/admin files (/admin, /phpmyadmin)
+- Outdated software versions
+- Missing security headers
+- HTTP methods enabled (TRACE, OPTIONS)
+- Sensitive info in headers
+- SSL/TLS issues
+
+**Tips**:
+- Use `-Tuning x` for comprehensive scan
+- Check `-mutate` for directory brute force
+- Combine with whatweb for tech identification
+- Filter false positives with `-IgnoreCode`
+
+---
+
+## Quick Reference - New Tools
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| whatweb | `whatweb target.com` | Technology fingerprinting |
+| httpie | `http GET target.com` | Better HTTP client |
+| wapiti | `wapiti -u target.com` | Full vulnerability scanner |
+| nikto | `nikto -h target.com` | Web server scanner |
+
+## Additional Web Tools (Just Installed)
+
+### whatweb - Technology Fingerprinting
+**Location**: `/usr/bin/whatweb`
+**Purpose**: Identify technologies used by web servers (CMS, frameworks, libraries)
+
+**Use Cases**:
+```bash
+# Basic scan
+whatweb kambegoye.com
+
+# Aggressive scan (more plugins)
+whatweb kambegoye.com --aggression=3
+
+# Scan multiple targets
+whatweb target1.com target2.com --log-xml=results.xml
+
+# Quick scan with minimal plugins
+whatweb kambegoye.com --quick
+
+# Detailed output
+whatweb kambegoye.com -v
+
+# Scan with specific plugins
+whatweb kambegoye.com --plugins=nginx,php
+
+# JSON output
+whatweb kambegoye.com --log-json=results.json
+
+# Custom wordlist
+whatweb --input-file=targets.txt
+```
+
+**Common Plugins**:
+- `nginx`, `apache`, `iis` - Web servers
+- `php`, `asp`, `jsp` - Scripting languages
+- `wordpress`, `drupal`, `joomla` - CMS
+- `jquery`, `react`, `vue` - JS frameworks
+- `aws-s3`, `google-analytics` - Cloud/CDN
+
+**Tips**:
+- Use `--aggression=3` for deeper fingerprinting
+- Combine with nuclei for targeted vulnerability scanning
+- Check for outdated versions (known CVEs)
+
+---
+
+### httpie - Human-Friendly HTTP Client
+**Location**: `/usr/bin/http`
+**Purpose**: Intuitive replacement for curl with better syntax and JSON support
+
+**Use Cases**:
+```bash
+# Basic GET request
+http kambegoye.com
+
+# POST with JSON data
+http POST kambegoye.com/api/login username=admin password=secret
+
+# With headers
+http GET kambegoye.com Authorization:"Bearer token"
+
+# Form data
+http -f POST kambegoye.com/search q=test category=api
+
+# Download file
+http -d kambegoye.com/image.jpg
+
+# Upload file
+http -f POST kambegoye.com/upload file@image.jpg
+
+# Follow redirects
+http --follow kambegoye.com
+
+# Timeout
+http --timeout=30 kambegoye.com
+
+# Verbose (show request/response)
+http -v kambegoye.com
+
+# Session handling
+http --session=auth kambegoye.com/login u=admin p=pass
+http --session=auth kambegoye.com/secure
+
+# Proxy support
+http --proxy=http://proxy:8080 kambegoye.com
+```
+
+**Advantages over curl**:
+- Automatic JSON formatting
+- Readable colorized output
+- Session persistence
+- Simpler syntax
+
+**Tips for Bug Bounty**:
+- Use `http -v` to see exact headers being sent
+- Test various HTTP methods (PUT, DELETE, PATCH)
+- Check for HTTP parameter pollution
+- Test HTTP desync attacks
+
+---
+
+### wapiti - Full Web Vulnerability Scanner
+**Location**: `/usr/bin/wapiti`
+**Purpose**: Comprehensive web application vulnerability scanner
+
+**Use Cases**:
+```bash
+# Basic scan
+wapiti -u kambegoye.com
+
+# Scan with specific modules
+wapiti -u kambegoye.com --modules struts,sql
+
+# Full scan with all modules
+wapiti -u kambegoye.com --modules all
+
+# Scan with authentication
+wapiti -u kambegoye.com --auth-type basic --auth-cred admin:secret
+wapiti -u kambegoye.com --form-cred "http://target.com/login:username=admin&password=secret"
+
+# With cookies
+wapiti -u kambegoye.com --cookie "PHPSESSID=xxx"
+
+# Crawl depth
+wapiti -u kambegoye.com --depth 3
+
+# Output formats
+wapiti -u kambegoye.com -f json -o results/
+wapiti -u kambegoye.com -f html -o report.html
+
+# Scan specific paths only
+wapita -u kambegoye.com --scope "kambegoye.com/api/*"
+
+# Exclude paths
+wapiti -u kambegoye.com --exclude "logout,admin"
+
+# Passive scan (no exploitation)
+wapiti -u kambegoye.com --flush-session
+
+# Continue interrupted scan
+wapiti -u kambegoye.com --continue
+```
+
+**Vulnerability Modules**:
+- `backup` - Backup files disclosure
+- `blindsql` - Blind SQL injection
+- `busqueda` - Directory traversal
+- `crlf` - CRLF injection
+- `exec` - Command execution
+- `file` - File handling issues
+- `htaccess` - Misconfigured htaccess
+- `nikto` - Nikto integration
+- `sql` - SQL injection
+- `ssrf` - Server-side request forgery
+- `xss` - Cross-site scripting
+- `xxe` - XML external entity
+
+**Tips**:
+- Use `--scope` to stay within target
+- Scan with and without authentication
+- Check JSON output for automation
+- Combine with nuclei for validation
+
+---
+
+### nikto - Web Server Scanner
+**Location**: `/usr/bin/nikto`
+**Purpose**: Scan web servers for dangerous files, outdated software, configuration issues
+
+**Use Cases**:
+```bash
+# Basic scan
+nikto -h kambegoye.com
+
+# HTTPS scan
+nikto -h https://kambegoye.com
+
+# With port
+nikto -h kambegoye.com -p 8080
+
+# Multiple ports
+nikto -h kambegoye.com -p 80,443,8080
+
+# Scan with authentication
+nikto -h kambegoye.com -id admin:secret
+
+# Cookies
+nikto -h kambegoye.com -cookie "PHPSESSID=xxx"
+
+# Tunings (reduce noise)
+nikto -h kambegoye.com -Tuning 1  # Interesting files
+nikto -h kambegoye.com -Tuning 2  # Misconfiguration
+nikto -h kambegoye.com -Tuning 3  # Information disclosure
+nikto -h kambegoye.com -Tuning x  # All
+
+# Output formats
+nikto -h kambegoye.com -o results.txt
+nikto -h kambegoye.com -Format json -o results.json
+
+# Pause between requests
+nikto -h kambegoye.com -Pause 2
+
+# Verbose
+nikto -h kambegoye.com -v
+
+# Update plugins
+nikto -update
+
+# List all tests
+nikto -list-plugins
+```
+
+**Tuning Options**:
+- `1` - Interesting files
+- `2` - Misconfiguration
+- `3` - Information disclosure
+- `4` - Injection (XSS, etc.)
+- `5` - Remote file retrieval
+- `6` - Denial of service
+- `7` - Remote file retrieval - IIS
+- `8` - Command execution - remote
+- `9` - SQL Injection
+- `0` - File upload
+- `a` - Authentication bypass
+- `b` - Software identification
+- `c` - Source code disclosure
+- `d` - Path traversal
+- `e` - Logic error
+
+**Common Findings**:
+- Default/admin files (/admin, /phpmyadmin)
+- Outdated software versions
+- Missing security headers
+- HTTP methods enabled (TRACE, OPTIONS)
+- Sensitive info in headers
+- SSL/TLS issues
+
+**Tips**:
+- Use `-Tuning x` for comprehensive scan
+- Check `-mutate` for directory brute force
+- Combine with whatweb for tech identification
+- Filter false positives with `-IgnoreCode`
+
+---
+
+## Quick Reference - New Tools
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| whatweb | `whatweb target.com` | Technology fingerprinting |
+| httpie | `http GET target.com` | Better HTTP client |
+| wapiti | `wapiti -u target.com` | Full vulnerability scanner |
+| nikto | `nikto -h target.com` | Web server scanner |
+
+## Additional Web Tools (Just Installed)
+
+### whatweb - Technology Fingerprinting
+**Location**: `/usr/bin/whatweb`
+**Purpose**: Identify technologies used by web servers (CMS, frameworks, libraries)
+
+**Use Cases**:
+```bash
+# Basic scan
+whatweb kambegoye.com
+
+# Aggressive scan (more plugins)
+whatweb kambegoye.com --aggression=3
+
+# Scan multiple targets
+whatweb target1.com target2.com --log-xml=results.xml
+
+# Quick scan with minimal plugins
+whatweb kambegoye.com --quick
+
+# Detailed output
+whatweb kambegoye.com -v
+
+# Scan with specific plugins
+whatweb kambegoye.com --plugins=nginx,php
+
+# JSON output
+whatweb kambegoye.com --log-json=results.json
+
+# Custom wordlist
+whatweb --input-file=targets.txt
+```
+
+**Common Plugins**:
+- `nginx`, `apache`, `iis` - Web servers
+- `php`, `asp`, `jsp` - Scripting languages
+- `wordpress`, `drupal`, `joomla` - CMS
+- `jquery`, `react`, `vue` - JS frameworks
+- `aws-s3`, `google-analytics` - Cloud/CDN
+
+**Tips**:
+- Use `--aggression=3` for deeper fingerprinting
+- Combine with nuclei for targeted vulnerability scanning
+- Check for outdated versions (known CVEs)
+
+---
+
+### httpie - Human-Friendly HTTP Client
+**Location**: `/usr/bin/http`
+**Purpose**: Intuitive replacement for curl with better syntax and JSON support
+
+**Use Cases**:
+```bash
+# Basic GET request
+http kambegoye.com
+
+# POST with JSON data
+http POST kambegoye.com/api/login username=admin password=secret
+
+# With headers
+http GET kambegoye.com Authorization:"Bearer token"
+
+# Form data
+http -f POST kambegoye.com/search q=test category=api
+
+# Download file
+http -d kambegoye.com/image.jpg
+
+# Upload file
+http -f POST kambegoye.com/upload file@image.jpg
+
+# Follow redirects
+http --follow kambegoye.com
+
+# Timeout
+http --timeout=30 kambegoye.com
+
+# Verbose (show request/response)
+http -v kambegoye.com
+
+# Session handling
+http --session=auth kambegoye.com/login u=admin p=pass
+http --session=auth kambegoye.com/secure
+
+# Proxy support
+http --proxy=http://proxy:8080 kambegoye.com
+```
+
+**Advantages over curl**:
+- Automatic JSON formatting
+- Readable colorized output
+- Session persistence
+- Simpler syntax
+
+**Tips for Bug Bounty**:
+- Use `http -v` to see exact headers being sent
+- Test various HTTP methods (PUT, DELETE, PATCH)
+- Check for HTTP parameter pollution
+- Test HTTP desync attacks
+
+---
+
+### wapiti - Full Web Vulnerability Scanner
+**Location**: `/usr/bin/wapiti`
+**Purpose**: Comprehensive web application vulnerability scanner
+
+**Use Cases**:
+```bash
+# Basic scan
+wapiti -u kambegoye.com
+
+# Scan with specific modules
+wapiti -u kambegoye.com --modules struts,sql
+
+# Full scan with all modules
+wapiti -u kambegoye.com --modules all
+
+# Scan with authentication
+wapiti -u kambegoye.com --auth-type basic --auth-cred admin:secret
+wapiti -u kambegoye.com --form-cred "http://target.com/login:username=admin&password=secret"
+
+# With cookies
+wapiti -u kambegoye.com --cookie "PHPSESSID=xxx"
+
+# Crawl depth
+wapiti -u kambegoye.com --depth 3
+
+# Output formats
+wapiti -u kambegoye.com -f json -o results/
+wapiti -u kambegoye.com -f html -o report.html
+
+# Scan specific paths only
+wapita -u kambegoye.com --scope "kambegoye.com/api/*"
+
+# Exclude paths
+wapiti -u kambegoye.com --exclude "logout,admin"
+
+# Passive scan (no exploitation)
+wapiti -u kambegoye.com --flush-session
+
+# Continue interrupted scan
+wapiti -u kambegoye.com --continue
+```
+
+**Vulnerability Modules**:
+- `backup` - Backup files disclosure
+- `blindsql` - Blind SQL injection
+- `busqueda` - Directory traversal
+- `crlf` - CRLF injection
+- `exec` - Command execution
+- `file` - File handling issues
+- `htaccess` - Misconfigured htaccess
+- `nikto` - Nikto integration
+- `sql` - SQL injection
+- `ssrf` - Server-side request forgery
+- `xss` - Cross-site scripting
+- `xxe` - XML external entity
+
+**Tips**:
+- Use `--scope` to stay within target
+- Scan with and without authentication
+- Check JSON output for automation
+- Combine with nuclei for validation
+
+---
+
+### nikto - Web Server Scanner
+**Location**: `/usr/bin/nikto`
+**Purpose**: Scan web servers for dangerous files, outdated software, configuration issues
+
+**Use Cases**:
+```bash
+# Basic scan
+nikto -h kambegoye.com
+
+# HTTPS scan
+nikto -h https://kambegoye.com
+
+# With port
+nikto -h kambegoye.com -p 8080
+
+# Multiple ports
+nikto -h kambegoye.com -p 80,443,8080
+
+# Scan with authentication
+nikto -h kambegoye.com -id admin:secret
+
+# Cookies
+nikto -h kambegoye.com -cookie "PHPSESSID=xxx"
+
+# Tunings (reduce noise)
+nikto -h kambegoye.com -Tuning 1  # Interesting files
+nikto -h kambegoye.com -Tuning 2  # Misconfiguration
+nikto -h kambegoye.com -Tuning 3  # Information disclosure
+nikto -h kambegoye.com -Tuning x  # All
+
+# Output formats
+nikto -h kambegoye.com -o results.txt
+nikto -h kambegoye.com -Format json -o results.json
+
+# Pause between requests
+nikto -h kambegoye.com -Pause 2
+
+# Verbose
+nikto -h kambegoye.com -v
+
+# Update plugins
+nikto -update
+
+# List all tests
+nikto -list-plugins
+```
+
+**Tuning Options**:
+- `1` - Interesting files
+- `2` - Misconfiguration
+- `3` - Information disclosure
+- `4` - Injection (XSS, etc.)
+- `5` - Remote file retrieval
+- `6` - Denial of service
+- `7` - Remote file retrieval - IIS
+- `8` - Command execution - remote
+- `9` - SQL Injection
+- `0` - File upload
+- `a` - Authentication bypass
+- `b` - Software identification
+- `c` - Source code disclosure
+- `d` - Path traversal
+- `e` - Logic error
+
+**Common Findings**:
+- Default/admin files (/admin, /phpmyadmin)
+- Outdated software versions
+- Missing security headers
+- HTTP methods enabled (TRACE, OPTIONS)
+- Sensitive info in headers
+- SSL/TLS issues
+
+**Tips**:
+- Use `-Tuning x` for comprehensive scan
+- Check `-mutate` for directory brute force
+- Combine with whatweb for tech identification
+- Filter false positives with `-IgnoreCode`
+
+---
+
+## Quick Reference - New Tools
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| whatweb | `whatweb target.com` | Technology fingerprinting |
+| httpie | `http GET target.com` | Better HTTP client |
+| wapiti | `wapiti -u target.com` | Full vulnerability scanner |
+| nikto | `nikto -h target.com` | Web server scanner |
+
+## Additional Web Tools (Just Installed)
+
+### whatweb - Technology Fingerprinting
+**Location**: `/usr/bin/whatweb`
+**Purpose**: Identify technologies used by web servers (CMS, frameworks, libraries)
+
+**Use Cases**:
+```bash
+# Basic scan
+whatweb kambegoye.com
+
+# Aggressive scan (more plugins)
+whatweb kambegoye.com --aggression=3
+
+# Scan multiple targets
+whatweb target1.com target2.com --log-xml=results.xml
+
+# Quick scan with minimal plugins
+whatweb kambegoye.com --quick
+
+# Detailed output
+whatweb kambegoye.com -v
+
+# Scan with specific plugins
+whatweb kambegoye.com --plugins=nginx,php
+
+# JSON output
+whatweb kambegoye.com --log-json=results.json
+
+# Custom wordlist
+whatweb --input-file=targets.txt
+```
+
+**Common Plugins**:
+- `nginx`, `apache`, `iis` - Web servers
+- `php`, `asp`, `jsp` - Scripting languages
+- `wordpress`, `drupal`, `joomla` - CMS
+- `jquery`, `react`, `vue` - JS frameworks
+- `aws-s3`, `google-analytics` - Cloud/CDN
+
+**Tips**:
+- Use `--aggression=3` for deeper fingerprinting
+- Combine with nuclei for targeted vulnerability scanning
+- Check for outdated versions (known CVEs)
+
+---
+
+### httpie - Human-Friendly HTTP Client
+**Location**: `/usr/bin/http`
+**Purpose**: Intuitive replacement for curl with better syntax and JSON support
+
+**Use Cases**:
+```bash
+# Basic GET request
+http kambegoye.com
+
+# POST with JSON data
+http POST kambegoye.com/api/login username=admin password=secret
+
+# With headers
+http GET kambegoye.com Authorization:"Bearer token"
+
+# Form data
+http -f POST kambegoye.com/search q=test category=api
+
+# Download file
+http -d kambegoye.com/image.jpg
+
+# Upload file
+http -f POST kambegoye.com/upload file@image.jpg
+
+# Follow redirects
+http --follow kambegoye.com
+
+# Timeout
+http --timeout=30 kambegoye.com
+
+# Verbose (show request/response)
+http -v kambegoye.com
+
+# Session handling
+http --session=auth kambegoye.com/login u=admin p=pass
+http --session=auth kambegoye.com/secure
+
+# Proxy support
+http --proxy=http://proxy:8080 kambegoye.com
+```
+
+**Advantages over curl**:
+- Automatic JSON formatting
+- Readable colorized output
+- Session persistence
+- Simpler syntax
+
+**Tips for Bug Bounty**:
+- Use `http -v` to see exact headers being sent
+- Test various HTTP methods (PUT, DELETE, PATCH)
+- Check for HTTP parameter pollution
+- Test HTTP desync attacks
+
+---
+
+### wapiti - Full Web Vulnerability Scanner
+**Location**: `/usr/bin/wapiti`
+**Purpose**: Comprehensive web application vulnerability scanner
+
+**Use Cases**:
+```bash
+# Basic scan
+wapiti -u kambegoye.com
+
+# Scan with specific modules
+wapiti -u kambegoye.com --modules struts,sql
+
+# Full scan with all modules
+wapiti -u kambegoye.com --modules all
+
+# Scan with authentication
+wapiti -u kambegoye.com --auth-type basic --auth-cred admin:secret
+wapiti -u kambegoye.com --form-cred "http://target.com/login:username=admin&password=secret"
+
+# With cookies
+wapiti -u kambegoye.com --cookie "PHPSESSID=xxx"
+
+# Crawl depth
+wapiti -u kambegoye.com --depth 3
+
+# Output formats
+wapiti -u kambegoye.com -f json -o results/
+wapiti -u kambegoye.com -f html -o report.html
+
+# Scan specific paths only
+wapita -u kambegoye.com --scope "kambegoye.com/api/*"
+
+# Exclude paths
+wapiti -u kambegoye.com --exclude "logout,admin"
+
+# Passive scan (no exploitation)
+wapiti -u kambegoye.com --flush-session
+
+# Continue interrupted scan
+wapiti -u kambegoye.com --continue
+```
+
+**Vulnerability Modules**:
+- `backup` - Backup files disclosure
+- `blindsql` - Blind SQL injection
+- `busqueda` - Directory traversal
+- `crlf` - CRLF injection
+- `exec` - Command execution
+- `file` - File handling issues
+- `htaccess` - Misconfigured htaccess
+- `nikto` - Nikto integration
+- `sql` - SQL injection
+- `ssrf` - Server-side request forgery
+- `xss` - Cross-site scripting
+- `xxe` - XML external entity
+
+**Tips**:
+- Use `--scope` to stay within target
+- Scan with and without authentication
+- Check JSON output for automation
+- Combine with nuclei for validation
+
+---
+
+### nikto - Web Server Scanner
+**Location**: `/usr/bin/nikto`
+**Purpose**: Scan web servers for dangerous files, outdated software, configuration issues
+
+**Use Cases**:
+```bash
+# Basic scan
+nikto -h kambegoye.com
+
+# HTTPS scan
+nikto -h https://kambegoye.com
+
+# With port
+nikto -h kambegoye.com -p 8080
+
+# Multiple ports
+nikto -h kambegoye.com -p 80,443,8080
+
+# Scan with authentication
+nikto -h kambegoye.com -id admin:secret
+
+# Cookies
+nikto -h kambegoye.com -cookie "PHPSESSID=xxx"
+
+# Tunings (reduce noise)
+nikto -h kambegoye.com -Tuning 1  # Interesting files
+nikto -h kambegoye.com -Tuning 2  # Misconfiguration
+nikto -h kambegoye.com -Tuning 3  # Information disclosure
+nikto -h kambegoye.com -Tuning x  # All
+
+# Output formats
+nikto -h kambegoye.com -o results.txt
+nikto -h kambegoye.com -Format json -o results.json
+
+# Pause between requests
+nikto -h kambegoye.com -Pause 2
+
+# Verbose
+nikto -h kambegoye.com -v
+
+# Update plugins
+nikto -update
+
+# List all tests
+nikto -list-plugins
+```
+
+**Tuning Options**:
+- `1` - Interesting files
+- `2` - Misconfiguration
+- `3` - Information disclosure
+- `4` - Injection (XSS, etc.)
+- `5` - Remote file retrieval
+- `6` - Denial of service
+- `7` - Remote file retrieval - IIS
+- `8` - Command execution - remote
+- `9` - SQL Injection
+- `0` - File upload
+- `a` - Authentication bypass
+- `b` - Software identification
+- `c` - Source code disclosure
+- `d` - Path traversal
+- `e` - Logic error
+
+**Common Findings**:
+- Default/admin files (/admin, /phpmyadmin)
+- Outdated software versions
+- Missing security headers
+- HTTP methods enabled (TRACE, OPTIONS)
+- Sensitive info in headers
+- SSL/TLS issues
+
+**Tips**:
+- Use `-Tuning x` for comprehensive scan
+- Check `-mutate` for directory brute force
+- Combine with whatweb for tech identification
+- Filter false positives with `-IgnoreCode`
+
+---
+
+## Quick Reference - New Tools
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| whatweb | `whatweb target.com` | Technology fingerprinting |
+| httpie | `http GET target.com` | Better HTTP client |
+| wapiti | `wapiti -u target.com` | Full vulnerability scanner |
+| nikto | `nikto -h target.com` | Web server scanner |
+
+## Additional Web Tools (Just Installed)
+
+### whatweb - Technology Fingerprinting
+**Location**: `/usr/bin/whatweb`
+**Purpose**: Identify technologies used by web servers (CMS, frameworks, libraries)
+
+**Use Cases**:
+```bash
+# Basic scan
+whatweb kambegoye.com
+
+# Aggressive scan (more plugins)
+whatweb kambegoye.com --aggression=3
+
+# Scan multiple targets
+whatweb target1.com target2.com --log-xml=results.xml
+
+# Quick scan with minimal plugins
+whatweb kambegoye.com --quick
+
+# Detailed output
+whatweb kambegoye.com -v
+
+# Scan with specific plugins
+whatweb kambegoye.com --plugins=nginx,php
+
+# JSON output
+whatweb kambegoye.com --log-json=results.json
+
+# Custom wordlist
+whatweb --input-file=targets.txt
+```
+
+**Common Plugins**:
+- `nginx`, `apache`, `iis` - Web servers
+- `php`, `asp`, `jsp` - Scripting languages
+- `wordpress`, `drupal`, `joomla` - CMS
+- `jquery`, `react`, `vue` - JS frameworks
+- `aws-s3`, `google-analytics` - Cloud/CDN
+
+**Tips**:
+- Use `--aggression=3` for deeper fingerprinting
+- Combine with nuclei for targeted vulnerability scanning
+- Check for outdated versions (known CVEs)
+
+---
+
+### httpie - Human-Friendly HTTP Client
+**Location**: `/usr/bin/http`
+**Purpose**: Intuitive replacement for curl with better syntax and JSON support
+
+**Use Cases**:
+```bash
+# Basic GET request
+http kambegoye.com
+
+# POST with JSON data
+http POST kambegoye.com/api/login username=admin password=secret
+
+# With headers
+http GET kambegoye.com Authorization:"Bearer token"
+
+# Form data
+http -f POST kambegoye.com/search q=test category=api
+
+# Download file
+http -d kambegoye.com/image.jpg
+
+# Upload file
+http -f POST kambegoye.com/upload file@image.jpg
+
+# Follow redirects
+http --follow kambegoye.com
+
+# Timeout
+http --timeout=30 kambegoye.com
+
+# Verbose (show request/response)
+http -v kambegoye.com
+
+# Session handling
+http --session=auth kambegoye.com/login u=admin p=pass
+http --session=auth kambegoye.com/secure
+
+# Proxy support
+http --proxy=http://proxy:8080 kambegoye.com
+```
+
+**Advantages over curl**:
+- Automatic JSON formatting
+- Readable colorized output
+- Session persistence
+- Simpler syntax
+
+**Tips for Bug Bounty**:
+- Use `http -v` to see exact headers being sent
+- Test various HTTP methods (PUT, DELETE, PATCH)
+- Check for HTTP parameter pollution
+- Test HTTP desync attacks
+
+---
+
+### wapiti - Full Web Vulnerability Scanner
+**Location**: `/usr/bin/wapiti`
+**Purpose**: Comprehensive web application vulnerability scanner
+
+**Use Cases**:
+```bash
+# Basic scan
+wapiti -u kambegoye.com
+
+# Scan with specific modules
+wapiti -u kambegoye.com --modules struts,sql
+
+# Full scan with all modules
+wapiti -u kambegoye.com --modules all
+
+# Scan with authentication
+wapiti -u kambegoye.com --auth-type basic --auth-cred admin:secret
+wapiti -u kambegoye.com --form-cred "http://target.com/login:username=admin&password=secret"
+
+# With cookies
+wapiti -u kambegoye.com --cookie "PHPSESSID=xxx"
+
+# Crawl depth
+wapiti -u kambegoye.com --depth 3
+
+# Output formats
+wapiti -u kambegoye.com -f json -o results/
+wapiti -u kambegoye.com -f html -o report.html
+
+# Scan specific paths only
+wapita -u kambegoye.com --scope "kambegoye.com/api/*"
+
+# Exclude paths
+wapiti -u kambegoye.com --exclude "logout,admin"
+
+# Passive scan (no exploitation)
+wapiti -u kambegoye.com --flush-session
+
+# Continue interrupted scan
+wapiti -u kambegoye.com --continue
+```
+
+**Vulnerability Modules**:
+- `backup` - Backup files disclosure
+- `blindsql` - Blind SQL injection
+- `busqueda` - Directory traversal
+- `crlf` - CRLF injection
+- `exec` - Command execution
+- `file` - File handling issues
+- `htaccess` - Misconfigured htaccess
+- `nikto` - Nikto integration
+- `sql` - SQL injection
+- `ssrf` - Server-side request forgery
+- `xss` - Cross-site scripting
+- `xxe` - XML external entity
+
+**Tips**:
+- Use `--scope` to stay within target
+- Scan with and without authentication
+- Check JSON output for automation
+- Combine with nuclei for validation
+
+---
+
+### nikto - Web Server Scanner
+**Location**: `/usr/bin/nikto`
+**Purpose**: Scan web servers for dangerous files, outdated software, configuration issues
+
+**Use Cases**:
+```bash
+# Basic scan
+nikto -h kambegoye.com
+
+# HTTPS scan
+nikto -h https://kambegoye.com
+
+# With port
+nikto -h kambegoye.com -p 8080
+
+# Multiple ports
+nikto -h kambegoye.com -p 80,443,8080
+
+# Scan with authentication
+nikto -h kambegoye.com -id admin:secret
+
+# Cookies
+nikto -h kambegoye.com -cookie "PHPSESSID=xxx"
+
+# Tunings (reduce noise)
+nikto -h kambegoye.com -Tuning 1  # Interesting files
+nikto -h kambegoye.com -Tuning 2  # Misconfiguration
+nikto -h kambegoye.com -Tuning 3  # Information disclosure
+nikto -h kambegoye.com -Tuning x  # All
+
+# Output formats
+nikto -h kambegoye.com -o results.txt
+nikto -h kambegoye.com -Format json -o results.json
+
+# Pause between requests
+nikto -h kambegoye.com -Pause 2
+
+# Verbose
+nikto -h kambegoye.com -v
+
+# Update plugins
+nikto -update
+
+# List all tests
+nikto -list-plugins
+```
+
+**Tuning Options**:
+- `1` - Interesting files
+- `2` - Misconfiguration
+- `3` - Information disclosure
+- `4` - Injection (XSS, etc.)
+- `5` - Remote file retrieval
+- `6` - Denial of service
+- `7` - Remote file retrieval - IIS
+- `8` - Command execution - remote
+- `9` - SQL Injection
+- `0` - File upload
+- `a` - Authentication bypass
+- `b` - Software identification
+- `c` - Source code disclosure
+- `d` - Path traversal
+- `e` - Logic error
+
+**Common Findings**:
+- Default/admin files (/admin, /phpmyadmin)
+- Outdated software versions
+- Missing security headers
+- HTTP methods enabled (TRACE, OPTIONS)
+- Sensitive info in headers
+- SSL/TLS issues
+
+**Tips**:
+- Use `-Tuning x` for comprehensive scan
+- Check `-mutate` for directory brute force
+- Combine with whatweb for tech identification
+- Filter false positives with `-IgnoreCode`
+
+---
+
+## Quick Reference - New Tools
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| whatweb | `whatweb target.com` | Technology fingerprinting |
+| httpie | `http GET target.com` | Better HTTP client |
+| wapiti | `wapiti -u target.com` | Full vulnerability scanner |
+| nikto | `nikto -h target.com` | Web server scanner |
+
+## Additional Web Tools (Just Installed)
+
+### whatweb - Technology Fingerprinting
+**Location**: `/usr/bin/whatweb`
+**Purpose**: Identify technologies used by web servers (CMS, frameworks, libraries)
+
+**Use Cases**:
+```bash
+# Basic scan
+whatweb kambegoye.com
+
+# Aggressive scan (more plugins)
+whatweb kambegoye.com --aggression=3
+
+# Scan multiple targets
+whatweb target1.com target2.com --log-xml=results.xml
+
+# Quick scan with minimal plugins
+whatweb kambegoye.com --quick
+
+# Detailed output
+whatweb kambegoye.com -v
+
+# Scan with specific plugins
+whatweb kambegoye.com --plugins=nginx,php
+
+# JSON output
+whatweb kambegoye.com --log-json=results.json
+
+# Custom wordlist
+whatweb --input-file=targets.txt
+```
+
+**Common Plugins**:
+- `nginx`, `apache`, `iis` - Web servers
+- `php`, `asp`, `jsp` - Scripting languages
+- `wordpress`, `drupal`, `joomla` - CMS
+- `jquery`, `react`, `vue` - JS frameworks
+- `aws-s3`, `google-analytics` - Cloud/CDN
+
+**Tips**:
+- Use `--aggression=3` for deeper fingerprinting
+- Combine with nuclei for targeted vulnerability scanning
+- Check for outdated versions (known CVEs)
+
+---
+
+### httpie - Human-Friendly HTTP Client
+**Location**: `/usr/bin/http`
+**Purpose**: Intuitive replacement for curl with better syntax and JSON support
+
+**Use Cases**:
+```bash
+# Basic GET request
+http kambegoye.com
+
+# POST with JSON data
+http POST kambegoye.com/api/login username=admin password=secret
+
+# With headers
+http GET kambegoye.com Authorization:"Bearer token"
+
+# Form data
+http -f POST kambegoye.com/search q=test category=api
+
+# Download file
+http -d kambegoye.com/image.jpg
+
+# Upload file
+http -f POST kambegoye.com/upload file@image.jpg
+
+# Follow redirects
+http --follow kambegoye.com
+
+# Timeout
+http --timeout=30 kambegoye.com
+
+# Verbose (show request/response)
+http -v kambegoye.com
+
+# Session handling
+http --session=auth kambegoye.com/login u=admin p=pass
+http --session=auth kambegoye.com/secure
+
+# Proxy support
+http --proxy=http://proxy:8080 kambegoye.com
+```
+
+**Advantages over curl**:
+- Automatic JSON formatting
+- Readable colorized output
+- Session persistence
+- Simpler syntax
+
+**Tips for Bug Bounty**:
+- Use `http -v` to see exact headers being sent
+- Test various HTTP methods (PUT, DELETE, PATCH)
+- Check for HTTP parameter pollution
+- Test HTTP desync attacks
+
+---
+
+### wapiti - Full Web Vulnerability Scanner
+**Location**: `/usr/bin/wapiti`
+**Purpose**: Comprehensive web application vulnerability scanner
+
+**Use Cases**:
+```bash
+# Basic scan
+wapiti -u kambegoye.com
+
+# Scan with specific modules
+wapiti -u kambegoye.com --modules struts,sql
+
+# Full scan with all modules
+wapiti -u kambegoye.com --modules all
+
+# Scan with authentication
+wapiti -u kambegoye.com --auth-type basic --auth-cred admin:secret
+wapiti -u kambegoye.com --form-cred "http://target.com/login:username=admin&password=secret"
+
+# With cookies
+wapiti -u kambegoye.com --cookie "PHPSESSID=xxx"
+
+# Crawl depth
+wapiti -u kambegoye.com --depth 3
+
+# Output formats
+wapiti -u kambegoye.com -f json -o results/
+wapiti -u kambegoye.com -f html -o report.html
+
+# Scan specific paths only
+wapita -u kambegoye.com --scope "kambegoye.com/api/*"
+
+# Exclude paths
+wapiti -u kambegoye.com --exclude "logout,admin"
+
+# Passive scan (no exploitation)
+wapiti -u kambegoye.com --flush-session
+
+# Continue interrupted scan
+wapiti -u kambegoye.com --continue
+```
+
+**Vulnerability Modules**:
+- `backup` - Backup files disclosure
+- `blindsql` - Blind SQL injection
+- `busqueda` - Directory traversal
+- `crlf` - CRLF injection
+- `exec` - Command execution
+- `file` - File handling issues
+- `htaccess` - Misconfigured htaccess
+- `nikto` - Nikto integration
+- `sql` - SQL injection
+- `ssrf` - Server-side request forgery
+- `xss` - Cross-site scripting
+- `xxe` - XML external entity
+
+**Tips**:
+- Use `--scope` to stay within target
+- Scan with and without authentication
+- Check JSON output for automation
+- Combine with nuclei for validation
+
+---
+
+### nikto - Web Server Scanner
+**Location**: `/usr/bin/nikto`
+**Purpose**: Scan web servers for dangerous files, outdated software, configuration issues
+
+**Use Cases**:
+```bash
+# Basic scan
+nikto -h kambegoye.com
+
+# HTTPS scan
+nikto -h https://kambegoye.com
+
+# With port
+nikto -h kambegoye.com -p 8080
+
+# Multiple ports
+nikto -h kambegoye.com -p 80,443,8080
+
+# Scan with authentication
+nikto -h kambegoye.com -id admin:secret
+
+# Cookies
+nikto -h kambegoye.com -cookie "PHPSESSID=xxx"
+
+# Tunings (reduce noise)
+nikto -h kambegoye.com -Tuning 1  # Interesting files
+nikto -h kambegoye.com -Tuning 2  # Misconfiguration
+nikto -h kambegoye.com -Tuning 3  # Information disclosure
+nikto -h kambegoye.com -Tuning x  # All
+
+# Output formats
+nikto -h kambegoye.com -o results.txt
+nikto -h kambegoye.com -Format json -o results.json
+
+# Pause between requests
+nikto -h kambegoye.com -Pause 2
+
+# Verbose
+nikto -h kambegoye.com -v
+
+# Update plugins
+nikto -update
+
+# List all tests
+nikto -list-plugins
+```
+
+**Tuning Options**:
+- `1` - Interesting files
+- `2` - Misconfiguration
+- `3` - Information disclosure
+- `4` - Injection (XSS, etc.)
+- `5` - Remote file retrieval
+- `6` - Denial of service
+- `7` - Remote file retrieval - IIS
+- `8` - Command execution - remote
+- `9` - SQL Injection
+- `0` - File upload
+- `a` - Authentication bypass
+- `b` - Software identification
+- `c` - Source code disclosure
+- `d` - Path traversal
+- `e` - Logic error
+
+**Common Findings**:
+- Default/admin files (/admin, /phpmyadmin)
+- Outdated software versions
+- Missing security headers
+- HTTP methods enabled (TRACE, OPTIONS)
+- Sensitive info in headers
+- SSL/TLS issues
+
+**Tips**:
+- Use `-Tuning x` for comprehensive scan
+- Check `-mutate` for directory brute force
+- Combine with whatweb for tech identification
+- Filter false positives with `-IgnoreCode`
+
+---
+
+## Quick Reference - New Tools
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| whatweb | `whatweb target.com` | Technology fingerprinting |
+| httpie | `http GET target.com` | Better HTTP client |
+| wapiti | `wapiti -u target.com` | Full vulnerability scanner |
+| nikto | `nikto -h target.com` | Web server scanner |
+
+## Additional Web Tools (Just Installed)
+
+### whatweb - Technology Fingerprinting
+**Location**: `/usr/bin/whatweb`
+**Purpose**: Identify technologies used by web servers (CMS, frameworks, libraries)
+
+**Use Cases**:
+```bash
+# Basic scan
+whatweb kambegoye.com
+
+# Aggressive scan (more plugins)
+whatweb kambegoye.com --aggression=3
+
+# Scan multiple targets
+whatweb target1.com target2.com --log-xml=results.xml
+
+# Quick scan with minimal plugins
+whatweb kambegoye.com --quick
+
+# Detailed output
+whatweb kambegoye.com -v
+
+# Scan with specific plugins
+whatweb kambegoye.com --plugins=nginx,php
+
+# JSON output
+whatweb kambegoye.com --log-json=results.json
+
+# Custom wordlist
+whatweb --input-file=targets.txt
+```
+
+**Common Plugins**:
+- `nginx`, `apache`, `iis` - Web servers
+- `php`, `asp`, `jsp` - Scripting languages
+- `wordpress`, `drupal`, `joomla` - CMS
+- `jquery`, `react`, `vue` - JS frameworks
+- `aws-s3`, `google-analytics` - Cloud/CDN
+
+**Tips**:
+- Use `--aggression=3` for deeper fingerprinting
+- Combine with nuclei for targeted vulnerability scanning
+- Check for outdated versions (known CVEs)
+
+---
+
+### httpie - Human-Friendly HTTP Client
+**Location**: `/usr/bin/http`
+**Purpose**: Intuitive replacement for curl with better syntax and JSON support
+
+**Use Cases**:
+```bash
+# Basic GET request
+http kambegoye.com
+
+# POST with JSON data
+http POST kambegoye.com/api/login username=admin password=secret
+
+# With headers
+http GET kambegoye.com Authorization:"Bearer token"
+
+# Form data
+http -f POST kambegoye.com/search q=test category=api
+
+# Download file
+http -d kambegoye.com/image.jpg
+
+# Upload file
+http -f POST kambegoye.com/upload file@image.jpg
+
+# Follow redirects
+http --follow kambegoye.com
+
+# Timeout
+http --timeout=30 kambegoye.com
+
+# Verbose (show request/response)
+http -v kambegoye.com
+
+# Session handling
+http --session=auth kambegoye.com/login u=admin p=pass
+http --session=auth kambegoye.com/secure
+
+# Proxy support
+http --proxy=http://proxy:8080 kambegoye.com
+```
+
+**Advantages over curl**:
+- Automatic JSON formatting
+- Readable colorized output
+- Session persistence
+- Simpler syntax
+
+**Tips for Bug Bounty**:
+- Use `http -v` to see exact headers being sent
+- Test various HTTP methods (PUT, DELETE, PATCH)
+- Check for HTTP parameter pollution
+- Test HTTP desync attacks
+
+---
+
+### wapiti - Full Web Vulnerability Scanner
+**Location**: `/usr/bin/wapiti`
+**Purpose**: Comprehensive web application vulnerability scanner
+
+**Use Cases**:
+```bash
+# Basic scan
+wapiti -u kambegoye.com
+
+# Scan with specific modules
+wapiti -u kambegoye.com --modules struts,sql
+
+# Full scan with all modules
+wapiti -u kambegoye.com --modules all
+
+# Scan with authentication
+wapiti -u kambegoye.com --auth-type basic --auth-cred admin:secret
+wapiti -u kambegoye.com --form-cred "http://target.com/login:username=admin&password=secret"
+
+# With cookies
+wapiti -u kambegoye.com --cookie "PHPSESSID=xxx"
+
+# Crawl depth
+wapiti -u kambegoye.com --depth 3
+
+# Output formats
+wapiti -u kambegoye.com -f json -o results/
+wapiti -u kambegoye.com -f html -o report.html
+
+# Scan specific paths only
+wapita -u kambegoye.com --scope "kambegoye.com/api/*"
+
+# Exclude paths
+wapiti -u kambegoye.com --exclude "logout,admin"
+
+# Passive scan (no exploitation)
+wapiti -u kambegoye.com --flush-session
+
+# Continue interrupted scan
+wapiti -u kambegoye.com --continue
+```
+
+**Vulnerability Modules**:
+- `backup` - Backup files disclosure
+- `blindsql` - Blind SQL injection
+- `busqueda` - Directory traversal
+- `crlf` - CRLF injection
+- `exec` - Command execution
+- `file` - File handling issues
+- `htaccess` - Misconfigured htaccess
+- `nikto` - Nikto integration
+- `sql` - SQL injection
+- `ssrf` - Server-side request forgery
+- `xss` - Cross-site scripting
+- `xxe` - XML external entity
+
+**Tips**:
+- Use `--scope` to stay within target
+- Scan with and without authentication
+- Check JSON output for automation
+- Combine with nuclei for validation
+
+---
+
+### nikto - Web Server Scanner
+**Location**: `/usr/bin/nikto`
+**Purpose**: Scan web servers for dangerous files, outdated software, configuration issues
+
+**Use Cases**:
+```bash
+# Basic scan
+nikto -h kambegoye.com
+
+# HTTPS scan
+nikto -h https://kambegoye.com
+
+# With port
+nikto -h kambegoye.com -p 8080
+
+# Multiple ports
+nikto -h kambegoye.com -p 80,443,8080
+
+# Scan with authentication
+nikto -h kambegoye.com -id admin:secret
+
+# Cookies
+nikto -h kambegoye.com -cookie "PHPSESSID=xxx"
+
+# Tunings (reduce noise)
+nikto -h kambegoye.com -Tuning 1  # Interesting files
+nikto -h kambegoye.com -Tuning 2  # Misconfiguration
+nikto -h kambegoye.com -Tuning 3  # Information disclosure
+nikto -h kambegoye.com -Tuning x  # All
+
+# Output formats
+nikto -h kambegoye.com -o results.txt
+nikto -h kambegoye.com -Format json -o results.json
+
+# Pause between requests
+nikto -h kambegoye.com -Pause 2
+
+# Verbose
+nikto -h kambegoye.com -v
+
+# Update plugins
+nikto -update
+
+# List all tests
+nikto -list-plugins
+```
+
+**Tuning Options**:
+- `1` - Interesting files
+- `2` - Misconfiguration
+- `3` - Information disclosure
+- `4` - Injection (XSS, etc.)
+- `5` - Remote file retrieval
+- `6` - Denial of service
+- `7` - Remote file retrieval - IIS
+- `8` - Command execution - remote
+- `9` - SQL Injection
+- `0` - File upload
+- `a` - Authentication bypass
+- `b` - Software identification
+- `c` - Source code disclosure
+- `d` - Path traversal
+- `e` - Logic error
+
+**Common Findings**:
+- Default/admin files (/admin, /phpmyadmin)
+- Outdated software versions
+- Missing security headers
+- HTTP methods enabled (TRACE, OPTIONS)
+- Sensitive info in headers
+- SSL/TLS issues
+
+**Tips**:
+- Use `-Tuning x` for comprehensive scan
+- Check `-mutate` for directory brute force
+- Combine with whatweb for tech identification
+- Filter false positives with `-IgnoreCode`
+
+---
+
+## Quick Reference - New Tools
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| whatweb | `whatweb target.com` | Technology fingerprinting |
+| httpie | `http GET target.com` | Better HTTP client |
+| wapiti | `wapiti -u target.com` | Full vulnerability scanner |
+| nikto | `nikto -h target.com` | Web server scanner |
+
+## Additional Web Tools (Just Installed)
+
+### whatweb - Technology Fingerprinting
+**Location**: `/usr/bin/whatweb`
+**Purpose**: Identify technologies used by web servers (CMS, frameworks, libraries)
+
+**Use Cases**:
+```bash
+# Basic scan
+whatweb kambegoye.com
+
+# Aggressive scan (more plugins)
+whatweb kambegoye.com --aggression=3
+
+# Scan multiple targets
+whatweb target1.com target2.com --log-xml=results.xml
+
+# Quick scan with minimal plugins
+whatweb kambegoye.com --quick
+
+# Detailed output
+whatweb kambegoye.com -v
+
+# Scan with specific plugins
+whatweb kambegoye.com --plugins=nginx,php
+
+# JSON output
+whatweb kambegoye.com --log-json=results.json
+
+# Custom wordlist
+whatweb --input-file=targets.txt
+```
+
+**Common Plugins**:
+- `nginx`, `apache`, `iis` - Web servers
+- `php`, `asp`, `jsp` - Scripting languages
+- `wordpress`, `drupal`, `joomla` - CMS
+- `jquery`, `react`, `vue` - JS frameworks
+- `aws-s3`, `google-analytics` - Cloud/CDN
+
+**Tips**:
+- Use `--aggression=3` for deeper fingerprinting
+- Combine with nuclei for targeted vulnerability scanning
+- Check for outdated versions (known CVEs)
+
+---
+
+### httpie - Human-Friendly HTTP Client
+**Location**: `/usr/bin/http`
+**Purpose**: Intuitive replacement for curl with better syntax and JSON support
+
+**Use Cases**:
+```bash
+# Basic GET request
+http kambegoye.com
+
+# POST with JSON data
+http POST kambegoye.com/api/login username=admin password=secret
+
+# With headers
+http GET kambegoye.com Authorization:"Bearer token"
+
+# Form data
+http -f POST kambegoye.com/search q=test category=api
+
+# Download file
+http -d kambegoye.com/image.jpg
+
+# Upload file
+http -f POST kambegoye.com/upload file@image.jpg
+
+# Follow redirects
+http --follow kambegoye.com
+
+# Timeout
+http --timeout=30 kambegoye.com
+
+# Verbose (show request/response)
+http -v kambegoye.com
+
+# Session handling
+http --session=auth kambegoye.com/login u=admin p=pass
+http --session=auth kambegoye.com/secure
+
+# Proxy support
+http --proxy=http://proxy:8080 kambegoye.com
+```
+
+**Advantages over curl**:
+- Automatic JSON formatting
+- Readable colorized output
+- Session persistence
+- Simpler syntax
+
+**Tips for Bug Bounty**:
+- Use `http -v` to see exact headers being sent
+- Test various HTTP methods (PUT, DELETE, PATCH)
+- Check for HTTP parameter pollution
+- Test HTTP desync attacks
+
+---
+
+### wapiti - Full Web Vulnerability Scanner
+**Location**: `/usr/bin/wapiti`
+**Purpose**: Comprehensive web application vulnerability scanner
+
+**Use Cases**:
+```bash
+# Basic scan
+wapiti -u kambegoye.com
+
+# Scan with specific modules
+wapiti -u kambegoye.com --modules struts,sql
+
+# Full scan with all modules
+wapiti -u kambegoye.com --modules all
+
+# Scan with authentication
+wapiti -u kambegoye.com --auth-type basic --auth-cred admin:secret
+wapiti -u kambegoye.com --form-cred "http://target.com/login:username=admin&password=secret"
+
+# With cookies
+wapiti -u kambegoye.com --cookie "PHPSESSID=xxx"
+
+# Crawl depth
+wapiti -u kambegoye.com --depth 3
+
+# Output formats
+wapiti -u kambegoye.com -f json -o results/
+wapiti -u kambegoye.com -f html -o report.html
+
+# Scan specific paths only
+wapita -u kambegoye.com --scope "kambegoye.com/api/*"
+
+# Exclude paths
+wapiti -u kambegoye.com --exclude "logout,admin"
+
+# Passive scan (no exploitation)
+wapiti -u kambegoye.com --flush-session
+
+# Continue interrupted scan
+wapiti -u kambegoye.com --continue
+```
+
+**Vulnerability Modules**:
+- `backup` - Backup files disclosure
+- `blindsql` - Blind SQL injection
+- `busqueda` - Directory traversal
+- `crlf` - CRLF injection
+- `exec` - Command execution
+- `file` - File handling issues
+- `htaccess` - Misconfigured htaccess
+- `nikto` - Nikto integration
+- `sql` - SQL injection
+- `ssrf` - Server-side request forgery
+- `xss` - Cross-site scripting
+- `xxe` - XML external entity
+
+**Tips**:
+- Use `--scope` to stay within target
+- Scan with and without authentication
+- Check JSON output for automation
+- Combine with nuclei for validation
+
+---
+
+### nikto - Web Server Scanner
+**Location**: `/usr/bin/nikto`
+**Purpose**: Scan web servers for dangerous files, outdated software, configuration issues
+
+**Use Cases**:
+```bash
+# Basic scan
+nikto -h kambegoye.com
+
+# HTTPS scan
+nikto -h https://kambegoye.com
+
+# With port
+nikto -h kambegoye.com -p 8080
+
+# Multiple ports
+nikto -h kambegoye.com -p 80,443,8080
+
+# Scan with authentication
+nikto -h kambegoye.com -id admin:secret
+
+# Cookies
+nikto -h kambegoye.com -cookie "PHPSESSID=xxx"
+
+# Tunings (reduce noise)
+nikto -h kambegoye.com -Tuning 1  # Interesting files
+nikto -h kambegoye.com -Tuning 2  # Misconfiguration
+nikto -h kambegoye.com -Tuning 3  # Information disclosure
+nikto -h kambegoye.com -Tuning x  # All
+
+# Output formats
+nikto -h kambegoye.com -o results.txt
+nikto -h kambegoye.com -Format json -o results.json
+
+# Pause between requests
+nikto -h kambegoye.com -Pause 2
+
+# Verbose
+nikto -h kambegoye.com -v
+
+# Update plugins
+nikto -update
+
+# List all tests
+nikto -list-plugins
+```
+
+**Tuning Options**:
+- `1` - Interesting files
+- `2` - Misconfiguration
+- `3` - Information disclosure
+- `4` - Injection (XSS, etc.)
+- `5` - Remote file retrieval
+- `6` - Denial of service
+- `7` - Remote file retrieval - IIS
+- `8` - Command execution - remote
+- `9` - SQL Injection
+- `0` - File upload
+- `a` - Authentication bypass
+- `b` - Software identification
+- `c` - Source code disclosure
+- `d` - Path traversal
+- `e` - Logic error
+
+**Common Findings**:
+- Default/admin files (/admin, /phpmyadmin)
+- Outdated software versions
+- Missing security headers
+- HTTP methods enabled (TRACE, OPTIONS)
+- Sensitive info in headers
+- SSL/TLS issues
+
+**Tips**:
+- Use `-Tuning x` for comprehensive scan
+- Check `-mutate` for directory brute force
+- Combine with whatweb for tech identification
+- Filter false positives with `-IgnoreCode`
+
+---
+
+## Quick Reference - New Tools
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| whatweb | `whatweb target.com` | Technology fingerprinting |
+| httpie | `http GET target.com` | Better HTTP client |
+| wapiti | `wapiti -u target.com` | Full vulnerability scanner |
+| nikto | `nikto -h target.com` | Web server scanner |
+
+## Additional Web Tools (Just Installed)
+
+### whatweb - Technology Fingerprinting
+**Location**: `/usr/bin/whatweb`
+**Purpose**: Identify technologies used by web servers (CMS, frameworks, libraries)
+
+**Use Cases**:
+```bash
+# Basic scan
+whatweb kambegoye.com
+
+# Aggressive scan (more plugins)
+whatweb kambegoye.com --aggression=3
+
+# Scan multiple targets
+whatweb target1.com target2.com --log-xml=results.xml
+
+# Quick scan with minimal plugins
+whatweb kambegoye.com --quick
+
+# Detailed output
+whatweb kambegoye.com -v
+
+# Scan with specific plugins
+whatweb kambegoye.com --plugins=nginx,php
+
+# JSON output
+whatweb kambegoye.com --log-json=results.json
+
+# Custom wordlist
+whatweb --input-file=targets.txt
+```
+
+**Common Plugins**:
+- `nginx`, `apache`, `iis` - Web servers
+- `php`, `asp`, `jsp` - Scripting languages
+- `wordpress`, `drupal`, `joomla` - CMS
+- `jquery`, `react`, `vue` - JS frameworks
+- `aws-s3`, `google-analytics` - Cloud/CDN
+
+**Tips**:
+- Use `--aggression=3` for deeper fingerprinting
+- Combine with nuclei for targeted vulnerability scanning
+- Check for outdated versions (known CVEs)
+
+---
+
+### httpie - Human-Friendly HTTP Client
+**Location**: `/usr/bin/http`
+**Purpose**: Intuitive replacement for curl with better syntax and JSON support
+
+**Use Cases**:
+```bash
+# Basic GET request
+http kambegoye.com
+
+# POST with JSON data
+http POST kambegoye.com/api/login username=admin password=secret
+
+# With headers
+http GET kambegoye.com Authorization:"Bearer token"
+
+# Form data
+http -f POST kambegoye.com/search q=test category=api
+
+# Download file
+http -d kambegoye.com/image.jpg
+
+# Upload file
+http -f POST kambegoye.com/upload file@image.jpg
+
+# Follow redirects
+http --follow kambegoye.com
+
+# Timeout
+http --timeout=30 kambegoye.com
+
+# Verbose (show request/response)
+http -v kambegoye.com
+
+# Session handling
+http --session=auth kambegoye.com/login u=admin p=pass
+http --session=auth kambegoye.com/secure
+
+# Proxy support
+http --proxy=http://proxy:8080 kambegoye.com
+```
+
+**Advantages over curl**:
+- Automatic JSON formatting
+- Readable colorized output
+- Session persistence
+- Simpler syntax
+
+**Tips for Bug Bounty**:
+- Use `http -v` to see exact headers being sent
+- Test various HTTP methods (PUT, DELETE, PATCH)
+- Check for HTTP parameter pollution
+- Test HTTP desync attacks
+
+---
+
+### wapiti - Full Web Vulnerability Scanner
+**Location**: `/usr/bin/wapiti`
+**Purpose**: Comprehensive web application vulnerability scanner
+
+**Use Cases**:
+```bash
+# Basic scan
+wapiti -u kambegoye.com
+
+# Scan with specific modules
+wapiti -u kambegoye.com --modules struts,sql
+
+# Full scan with all modules
+wapiti -u kambegoye.com --modules all
+
+# Scan with authentication
+wapiti -u kambegoye.com --auth-type basic --auth-cred admin:secret
+wapiti -u kambegoye.com --form-cred "http://target.com/login:username=admin&password=secret"
+
+# With cookies
+wapiti -u kambegoye.com --cookie "PHPSESSID=xxx"
+
+# Crawl depth
+wapiti -u kambegoye.com --depth 3
+
+# Output formats
+wapiti -u kambegoye.com -f json -o results/
+wapiti -u kambegoye.com -f html -o report.html
+
+# Scan specific paths only
+wapita -u kambegoye.com --scope "kambegoye.com/api/*"
+
+# Exclude paths
+wapiti -u kambegoye.com --exclude "logout,admin"
+
+# Passive scan (no exploitation)
+wapiti -u kambegoye.com --flush-session
+
+# Continue interrupted scan
+wapiti -u kambegoye.com --continue
+```
+
+**Vulnerability Modules**:
+- `backup` - Backup files disclosure
+- `blindsql` - Blind SQL injection
+- `busqueda` - Directory traversal
+- `crlf` - CRLF injection
+- `exec` - Command execution
+- `file` - File handling issues
+- `htaccess` - Misconfigured htaccess
+- `nikto` - Nikto integration
+- `sql` - SQL injection
+- `ssrf` - Server-side request forgery
+- `xss` - Cross-site scripting
+- `xxe` - XML external entity
+
+**Tips**:
+- Use `--scope` to stay within target
+- Scan with and without authentication
+- Check JSON output for automation
+- Combine with nuclei for validation
+
+---
+
+### nikto - Web Server Scanner
+**Location**: `/usr/bin/nikto`
+**Purpose**: Scan web servers for dangerous files, outdated software, configuration issues
+
+**Use Cases**:
+```bash
+# Basic scan
+nikto -h kambegoye.com
+
+# HTTPS scan
+nikto -h https://kambegoye.com
+
+# With port
+nikto -h kambegoye.com -p 8080
+
+# Multiple ports
+nikto -h kambegoye.com -p 80,443,8080
+
+# Scan with authentication
+nikto -h kambegoye.com -id admin:secret
+
+# Cookies
+nikto -h kambegoye.com -cookie "PHPSESSID=xxx"
+
+# Tunings (reduce noise)
+nikto -h kambegoye.com -Tuning 1  # Interesting files
+nikto -h kambegoye.com -Tuning 2  # Misconfiguration
+nikto -h kambegoye.com -Tuning 3  # Information disclosure
+nikto -h kambegoye.com -Tuning x  # All
+
+# Output formats
+nikto -h kambegoye.com -o results.txt
+nikto -h kambegoye.com -Format json -o results.json
+
+# Pause between requests
+nikto -h kambegoye.com -Pause 2
+
+# Verbose
+nikto -h kambegoye.com -v
+
+# Update plugins
+nikto -update
+
+# List all tests
+nikto -list-plugins
+```
+
+**Tuning Options**:
+- `1` - Interesting files
+- `2` - Misconfiguration
+- `3` - Information disclosure
+- `4` - Injection (XSS, etc.)
+- `5` - Remote file retrieval
+- `6` - Denial of service
+- `7` - Remote file retrieval - IIS
+- `8` - Command execution - remote
+- `9` - SQL Injection
+- `0` - File upload
+- `a` - Authentication bypass
+- `b` - Software identification
+- `c` - Source code disclosure
+- `d` - Path traversal
+- `e` - Logic error
+
+**Common Findings**:
+- Default/admin files (/admin, /phpmyadmin)
+- Outdated software versions
+- Missing security headers
+- HTTP methods enabled (TRACE, OPTIONS)
+- Sensitive info in headers
+- SSL/TLS issues
+
+**Tips**:
+- Use `-Tuning x` for comprehensive scan
+- Check `-mutate` for directory brute force
+- Combine with whatweb for tech identification
+- Filter false positives with `-IgnoreCode`
+
+---
+
+## Quick Reference - New Tools
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| whatweb | `whatweb target.com` | Technology fingerprinting |
+| httpie | `http GET target.com` | Better HTTP client |
+| wapiti | `wapiti -u target.com` | Full vulnerability scanner |
+| nikto | `nikto -h target.com` | Web server scanner |
+
+## Additional Web Tools (Just Installed)
+
+### whatweb - Technology Fingerprinting
+**Location**: `/usr/bin/whatweb`
+**Purpose**: Identify technologies used by web servers (CMS, frameworks, libraries)
+
+**Use Cases**:
+```bash
+# Basic scan
+whatweb kambegoye.com
+
+# Aggressive scan (more plugins)
+whatweb kambegoye.com --aggression=3
+
+# Scan multiple targets
+whatweb target1.com target2.com --log-xml=results.xml
+
+# Quick scan with minimal plugins
+whatweb kambegoye.com --quick
+
+# Detailed output
+whatweb kambegoye.com -v
+
+# Scan with specific plugins
+whatweb kambegoye.com --plugins=nginx,php
+
+# JSON output
+whatweb kambegoye.com --log-json=results.json
+
+# Custom wordlist
+whatweb --input-file=targets.txt
+```
+
+**Common Plugins**:
+- `nginx`, `apache`, `iis` - Web servers
+- `php`, `asp`, `jsp` - Scripting languages
+- `wordpress`, `drupal`, `joomla` - CMS
+- `jquery`, `react`, `vue` - JS frameworks
+- `aws-s3`, `google-analytics` - Cloud/CDN
+
+**Tips**:
+- Use `--aggression=3` for deeper fingerprinting
+- Combine with nuclei for targeted vulnerability scanning
+- Check for outdated versions (known CVEs)
+
+---
+
+### httpie - Human-Friendly HTTP Client
+**Location**: `/usr/bin/http`
+**Purpose**: Intuitive replacement for curl with better syntax and JSON support
+
+**Use Cases**:
+```bash
+# Basic GET request
+http kambegoye.com
+
+# POST with JSON data
+http POST kambegoye.com/api/login username=admin password=secret
+
+# With headers
+http GET kambegoye.com Authorization:"Bearer token"
+
+# Form data
+http -f POST kambegoye.com/search q=test category=api
+
+# Download file
+http -d kambegoye.com/image.jpg
+
+# Upload file
+http -f POST kambegoye.com/upload file@image.jpg
+
+# Follow redirects
+http --follow kambegoye.com
+
+# Timeout
+http --timeout=30 kambegoye.com
+
+# Verbose (show request/response)
+http -v kambegoye.com
+
+# Session handling
+http --session=auth kambegoye.com/login u=admin p=pass
+http --session=auth kambegoye.com/secure
+
+# Proxy support
+http --proxy=http://proxy:8080 kambegoye.com
+```
+
+**Advantages over curl**:
+- Automatic JSON formatting
+- Readable colorized output
+- Session persistence
+- Simpler syntax
+
+**Tips for Bug Bounty**:
+- Use `http -v` to see exact headers being sent
+- Test various HTTP methods (PUT, DELETE, PATCH)
+- Check for HTTP parameter pollution
+- Test HTTP desync attacks
+
+---
+
+### wapiti - Full Web Vulnerability Scanner
+**Location**: `/usr/bin/wapiti`
+**Purpose**: Comprehensive web application vulnerability scanner
+
+**Use Cases**:
+```bash
+# Basic scan
+wapiti -u kambegoye.com
+
+# Scan with specific modules
+wapiti -u kambegoye.com --modules struts,sql
+
+# Full scan with all modules
+wapiti -u kambegoye.com --modules all
+
+# Scan with authentication
+wapiti -u kambegoye.com --auth-type basic --auth-cred admin:secret
+wapiti -u kambegoye.com --form-cred "http://target.com/login:username=admin&password=secret"
+
+# With cookies
+wapiti -u kambegoye.com --cookie "PHPSESSID=xxx"
+
+# Crawl depth
+wapiti -u kambegoye.com --depth 3
+
+# Output formats
+wapiti -u kambegoye.com -f json -o results/
+wapiti -u kambegoye.com -f html -o report.html
+
+# Scan specific paths only
+wapita -u kambegoye.com --scope "kambegoye.com/api/*"
+
+# Exclude paths
+wapiti -u kambegoye.com --exclude "logout,admin"
+
+# Passive scan (no exploitation)
+wapiti -u kambegoye.com --flush-session
+
+# Continue interrupted scan
+wapiti -u kambegoye.com --continue
+```
+
+**Vulnerability Modules**:
+- `backup` - Backup files disclosure
+- `blindsql` - Blind SQL injection
+- `busqueda` - Directory traversal
+- `crlf` - CRLF injection
+- `exec` - Command execution
+- `file` - File handling issues
+- `htaccess` - Misconfigured htaccess
+- `nikto` - Nikto integration
+- `sql` - SQL injection
+- `ssrf` - Server-side request forgery
+- `xss` - Cross-site scripting
+- `xxe` - XML external entity
+
+**Tips**:
+- Use `--scope` to stay within target
+- Scan with and without authentication
+- Check JSON output for automation
+- Combine with nuclei for validation
+
+---
+
+### nikto - Web Server Scanner
+**Location**: `/usr/bin/nikto`
+**Purpose**: Scan web servers for dangerous files, outdated software, configuration issues
+
+**Use Cases**:
+```bash
+# Basic scan
+nikto -h kambegoye.com
+
+# HTTPS scan
+nikto -h https://kambegoye.com
+
+# With port
+nikto -h kambegoye.com -p 8080
+
+# Multiple ports
+nikto -h kambegoye.com -p 80,443,8080
+
+# Scan with authentication
+nikto -h kambegoye.com -id admin:secret
+
+# Cookies
+nikto -h kambegoye.com -cookie "PHPSESSID=xxx"
+
+# Tunings (reduce noise)
+nikto -h kambegoye.com -Tuning 1  # Interesting files
+nikto -h kambegoye.com -Tuning 2  # Misconfiguration
+nikto -h kambegoye.com -Tuning 3  # Information disclosure
+nikto -h kambegoye.com -Tuning x  # All
+
+# Output formats
+nikto -h kambegoye.com -o results.txt
+nikto -h kambegoye.com -Format json -o results.json
+
+# Pause between requests
+nikto -h kambegoye.com -Pause 2
+
+# Verbose
+nikto -h kambegoye.com -v
+
+# Update plugins
+nikto -update
+
+# List all tests
+nikto -list-plugins
+```
+
+**Tuning Options**:
+- `1` - Interesting files
+- `2` - Misconfiguration
+- `3` - Information disclosure
+- `4` - Injection (XSS, etc.)
+- `5` - Remote file retrieval
+- `6` - Denial of service
+- `7` - Remote file retrieval - IIS
+- `8` - Command execution - remote
+- `9` - SQL Injection
+- `0` - File upload
+- `a` - Authentication bypass
+- `b` - Software identification
+- `c` - Source code disclosure
+- `d` - Path traversal
+- `e` - Logic error
+
+**Common Findings**:
+- Default/admin files (/admin, /phpmyadmin)
+- Outdated software versions
+- Missing security headers
+- HTTP methods enabled (TRACE, OPTIONS)
+- Sensitive info in headers
+- SSL/TLS issues
+
+**Tips**:
+- Use `-Tuning x` for comprehensive scan
+- Check `-mutate` for directory brute force
+- Combine with whatweb for tech identification
+- Filter false positives with `-IgnoreCode`
+
+---
+
+## Quick Reference - New Tools
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| whatweb | `whatweb target.com` | Technology fingerprinting |
+| httpie | `http GET target.com` | Better HTTP client |
+| wapiti | `wapiti -u target.com` | Full vulnerability scanner |
+| nikto | `nikto -h target.com` | Web server scanner |
+
+## Additional Web Tools (Just Installed)
+
+### whatweb - Technology Fingerprinting
+**Location**: `/usr/bin/whatweb`
+**Purpose**: Identify technologies used by web servers (CMS, frameworks, libraries)
+
+**Use Cases**:
+```bash
+# Basic scan
+whatweb kambegoye.com
+
+# Aggressive scan (more plugins)
+whatweb kambegoye.com --aggression=3
+
+# Scan multiple targets
+whatweb target1.com target2.com --log-xml=results.xml
+
+# Quick scan with minimal plugins
+whatweb kambegoye.com --quick
+
+# Detailed output
+whatweb kambegoye.com -v
+
+# Scan with specific plugins
+whatweb kambegoye.com --plugins=nginx,php
+
+# JSON output
+whatweb kambegoye.com --log-json=results.json
+
+# Custom wordlist
+whatweb --input-file=targets.txt
+```
+
+**Common Plugins**:
+- `nginx`, `apache`, `iis` - Web servers
+- `php`, `asp`, `jsp` - Scripting languages
+- `wordpress`, `drupal`, `joomla` - CMS
+- `jquery`, `react`, `vue` - JS frameworks
+- `aws-s3`, `google-analytics` - Cloud/CDN
+
+**Tips**:
+- Use `--aggression=3` for deeper fingerprinting
+- Combine with nuclei for targeted vulnerability scanning
+- Check for outdated versions (known CVEs)
+
+---
+
+### httpie - Human-Friendly HTTP Client
+**Location**: `/usr/bin/http`
+**Purpose**: Intuitive replacement for curl with better syntax and JSON support
+
+**Use Cases**:
+```bash
+# Basic GET request
+http kambegoye.com
+
+# POST with JSON data
+http POST kambegoye.com/api/login username=admin password=secret
+
+# With headers
+http GET kambegoye.com Authorization:"Bearer token"
+
+# Form data
+http -f POST kambegoye.com/search q=test category=api
+
+# Download file
+http -d kambegoye.com/image.jpg
+
+# Upload file
+http -f POST kambegoye.com/upload file@image.jpg
+
+# Follow redirects
+http --follow kambegoye.com
+
+# Timeout
+http --timeout=30 kambegoye.com
+
+# Verbose (show request/response)
+http -v kambegoye.com
+
+# Session handling
+http --session=auth kambegoye.com/login u=admin p=pass
+http --session=auth kambegoye.com/secure
+
+# Proxy support
+http --proxy=http://proxy:8080 kambegoye.com
+```
+
+**Advantages over curl**:
+- Automatic JSON formatting
+- Readable colorized output
+- Session persistence
+- Simpler syntax
+
+**Tips for Bug Bounty**:
+- Use `http -v` to see exact headers being sent
+- Test various HTTP methods (PUT, DELETE, PATCH)
+- Check for HTTP parameter pollution
+- Test HTTP desync attacks
+
+---
+
+### wapiti - Full Web Vulnerability Scanner
+**Location**: `/usr/bin/wapiti`
+**Purpose**: Comprehensive web application vulnerability scanner
+
+**Use Cases**:
+```bash
+# Basic scan
+wapiti -u kambegoye.com
+
+# Scan with specific modules
+wapiti -u kambegoye.com --modules struts,sql
+
+# Full scan with all modules
+wapiti -u kambegoye.com --modules all
+
+# Scan with authentication
+wapiti -u kambegoye.com --auth-type basic --auth-cred admin:secret
+wapiti -u kambegoye.com --form-cred "http://target.com/login:username=admin&password=secret"
+
+# With cookies
+wapiti -u kambegoye.com --cookie "PHPSESSID=xxx"
+
+# Crawl depth
+wapiti -u kambegoye.com --depth 3
+
+# Output formats
+wapiti -u kambegoye.com -f json -o results/
+wapiti -u kambegoye.com -f html -o report.html
+
+# Scan specific paths only
+wapita -u kambegoye.com --scope "kambegoye.com/api/*"
+
+# Exclude paths
+wapiti -u kambegoye.com --exclude "logout,admin"
+
+# Passive scan (no exploitation)
+wapiti -u kambegoye.com --flush-session
+
+# Continue interrupted scan
+wapiti -u kambegoye.com --continue
+```
+
+**Vulnerability Modules**:
+- `backup` - Backup files disclosure
+- `blindsql` - Blind SQL injection
+- `busqueda` - Directory traversal
+- `crlf` - CRLF injection
+- `exec` - Command execution
+- `file` - File handling issues
+- `htaccess` - Misconfigured htaccess
+- `nikto` - Nikto integration
+- `sql` - SQL injection
+- `ssrf` - Server-side request forgery
+- `xss` - Cross-site scripting
+- `xxe` - XML external entity
+
+**Tips**:
+- Use `--scope` to stay within target
+- Scan with and without authentication
+- Check JSON output for automation
+- Combine with nuclei for validation
+
+---
+
+### nikto - Web Server Scanner
+**Location**: `/usr/bin/nikto`
+**Purpose**: Scan web servers for dangerous files, outdated software, configuration issues
+
+**Use Cases**:
+```bash
+# Basic scan
+nikto -h kambegoye.com
+
+# HTTPS scan
+nikto -h https://kambegoye.com
+
+# With port
+nikto -h kambegoye.com -p 8080
+
+# Multiple ports
+nikto -h kambegoye.com -p 80,443,8080
+
+# Scan with authentication
+nikto -h kambegoye.com -id admin:secret
+
+# Cookies
+nikto -h kambegoye.com -cookie "PHPSESSID=xxx"
+
+# Tunings (reduce noise)
+nikto -h kambegoye.com -Tuning 1  # Interesting files
+nikto -h kambegoye.com -Tuning 2  # Misconfiguration
+nikto -h kambegoye.com -Tuning 3  # Information disclosure
+nikto -h kambegoye.com -Tuning x  # All
+
+# Output formats
+nikto -h kambegoye.com -o results.txt
+nikto -h kambegoye.com -Format json -o results.json
+
+# Pause between requests
+nikto -h kambegoye.com -Pause 2
+
+# Verbose
+nikto -h kambegoye.com -v
+
+# Update plugins
+nikto -update
+
+# List all tests
+nikto -list-plugins
+```
+
+**Tuning Options**:
+- `1` - Interesting files
+- `2` - Misconfiguration
+- `3` - Information disclosure
+- `4` - Injection (XSS, etc.)
+- `5` - Remote file retrieval
+- `6` - Denial of service
+- `7` - Remote file retrieval - IIS
+- `8` - Command execution - remote
+- `9` - SQL Injection
+- `0` - File upload
+- `a` - Authentication bypass
+- `b` - Software identification
+- `c` - Source code disclosure
+- `d` - Path traversal
+- `e` - Logic error
+
+**Common Findings**:
+- Default/admin files (/admin, /phpmyadmin)
+- Outdated software versions
+- Missing security headers
+- HTTP methods enabled (TRACE, OPTIONS)
+- Sensitive info in headers
+- SSL/TLS issues
+
+**Tips**:
+- Use `-Tuning x` for comprehensive scan
+- Check `-mutate` for directory brute force
+- Combine with whatweb for tech identification
+- Filter false positives with `-IgnoreCode`
+
+---
+
+## Quick Reference - New Tools
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| whatweb | `whatweb target.com` | Technology fingerprinting |
+| httpie | `http GET target.com` | Better HTTP client |
+| wapiti | `wapiti -u target.com` | Full vulnerability scanner |
+| nikto | `nikto -h target.com` | Web server scanner |
+
+## Additional Web Tools (Just Installed)
+
+### whatweb - Technology Fingerprinting
+**Location**: `/usr/bin/whatweb`
+**Purpose**: Identify technologies used by web servers (CMS, frameworks, libraries)
+
+**Use Cases**:
+```bash
+# Basic scan
+whatweb kambegoye.com
+
+# Aggressive scan (more plugins)
+whatweb kambegoye.com --aggression=3
+
+# Scan multiple targets
+whatweb target1.com target2.com --log-xml=results.xml
+
+# Quick scan with minimal plugins
+whatweb kambegoye.com --quick
+
+# Detailed output
+whatweb kambegoye.com -v
+
+# Scan with specific plugins
+whatweb kambegoye.com --plugins=nginx,php
+
+# JSON output
+whatweb kambegoye.com --log-json=results.json
+
+# Custom wordlist
+whatweb --input-file=targets.txt
+```
+
+**Common Plugins**:
+- `nginx`, `apache`, `iis` - Web servers
+- `php`, `asp`, `jsp` - Scripting languages
+- `wordpress`, `drupal`, `joomla` - CMS
+- `jquery`, `react`, `vue` - JS frameworks
+- `aws-s3`, `google-analytics` - Cloud/CDN
+
+**Tips**:
+- Use `--aggression=3` for deeper fingerprinting
+- Combine with nuclei for targeted vulnerability scanning
+- Check for outdated versions (known CVEs)
+
+---
+
+### httpie - Human-Friendly HTTP Client
+**Location**: `/usr/bin/http`
+**Purpose**: Intuitive replacement for curl with better syntax and JSON support
+
+**Use Cases**:
+```bash
+# Basic GET request
+http kambegoye.com
+
+# POST with JSON data
+http POST kambegoye.com/api/login username=admin password=secret
+
+# With headers
+http GET kambegoye.com Authorization:"Bearer token"
+
+# Form data
+http -f POST kambegoye.com/search q=test category=api
+
+# Download file
+http -d kambegoye.com/image.jpg
+
+# Upload file
+http -f POST kambegoye.com/upload file@image.jpg
+
+# Follow redirects
+http --follow kambegoye.com
+
+# Timeout
+http --timeout=30 kambegoye.com
+
+# Verbose (show request/response)
+http -v kambegoye.com
+
+# Session handling
+http --session=auth kambegoye.com/login u=admin p=pass
+http --session=auth kambegoye.com/secure
+
+# Proxy support
+http --proxy=http://proxy:8080 kambegoye.com
+```
+
+**Advantages over curl**:
+- Automatic JSON formatting
+- Readable colorized output
+- Session persistence
+- Simpler syntax
+
+**Tips for Bug Bounty**:
+- Use `http -v` to see exact headers being sent
+- Test various HTTP methods (PUT, DELETE, PATCH)
+- Check for HTTP parameter pollution
+- Test HTTP desync attacks
+
+---
+
+### wapiti - Full Web Vulnerability Scanner
+**Location**: `/usr/bin/wapiti`
+**Purpose**: Comprehensive web application vulnerability scanner
+
+**Use Cases**:
+```bash
+# Basic scan
+wapiti -u kambegoye.com
+
+# Scan with specific modules
+wapiti -u kambegoye.com --modules struts,sql
+
+# Full scan with all modules
+wapiti -u kambegoye.com --modules all
+
+# Scan with authentication
+wapiti -u kambegoye.com --auth-type basic --auth-cred admin:secret
+wapiti -u kambegoye.com --form-cred "http://target.com/login:username=admin&password=secret"
+
+# With cookies
+wapiti -u kambegoye.com --cookie "PHPSESSID=xxx"
+
+# Crawl depth
+wapiti -u kambegoye.com --depth 3
+
+# Output formats
+wapiti -u kambegoye.com -f json -o results/
+wapiti -u kambegoye.com -f html -o report.html
+
+# Scan specific paths only
+wapita -u kambegoye.com --scope "kambegoye.com/api/*"
+
+# Exclude paths
+wapiti -u kambegoye.com --exclude "logout,admin"
+
+# Passive scan (no exploitation)
+wapiti -u kambegoye.com --flush-session
+
+# Continue interrupted scan
+wapiti -u kambegoye.com --continue
+```
+
+**Vulnerability Modules**:
+- `backup` - Backup files disclosure
+- `blindsql` - Blind SQL injection
+- `busqueda` - Directory traversal
+- `crlf` - CRLF injection
+- `exec` - Command execution
+- `file` - File handling issues
+- `htaccess` - Misconfigured htaccess
+- `nikto` - Nikto integration
+- `sql` - SQL injection
+- `ssrf` - Server-side request forgery
+- `xss` - Cross-site scripting
+- `xxe` - XML external entity
+
+**Tips**:
+- Use `--scope` to stay within target
+- Scan with and without authentication
+- Check JSON output for automation
+- Combine with nuclei for validation
+
+---
+
+### nikto - Web Server Scanner
+**Location**: `/usr/bin/nikto`
+**Purpose**: Scan web servers for dangerous files, outdated software, configuration issues
+
+**Use Cases**:
+```bash
+# Basic scan
+nikto -h kambegoye.com
+
+# HTTPS scan
+nikto -h https://kambegoye.com
+
+# With port
+nikto -h kambegoye.com -p 8080
+
+# Multiple ports
+nikto -h kambegoye.com -p 80,443,8080
+
+# Scan with authentication
+nikto -h kambegoye.com -id admin:secret
+
+# Cookies
+nikto -h kambegoye.com -cookie "PHPSESSID=xxx"
+
+# Tunings (reduce noise)
+nikto -h kambegoye.com -Tuning 1  # Interesting files
+nikto -h kambegoye.com -Tuning 2  # Misconfiguration
+nikto -h kambegoye.com -Tuning 3  # Information disclosure
+nikto -h kambegoye.com -Tuning x  # All
+
+# Output formats
+nikto -h kambegoye.com -o results.txt
+nikto -h kambegoye.com -Format json -o results.json
+
+# Pause between requests
+nikto -h kambegoye.com -Pause 2
+
+# Verbose
+nikto -h kambegoye.com -v
+
+#
