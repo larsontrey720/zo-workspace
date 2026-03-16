@@ -6,7 +6,6 @@ metadata:
   category: External
   display-name: Brainstorming Expert
 ---
-
 # Brainstorming Ideas Into Designs
 
 ## Overview

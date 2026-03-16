@@ -8,10 +8,40 @@
 
 ---
 
+## MuninnDB - Cognitive Memory
+
+MuninnDB is installed and running. At the **start of each new conversation**, you MUST:
+
+1. Read the user's query/message
+2. Call `bun run Skills/muninndb-setup/scripts/muninn.ts activate "<relevant context from user message>"`
+3. Include any relevant recalled memories in your first response
+
+Example: If the user says "work on my StreamLeap project", activate with "StreamLeap" to recall relevant memories.
+
+# Store a memory
+bun run Skills/muninndb-setup/scripts/muninn.ts store "concept" "content" --tags tag1,tag2
+
+# Recall relevant memories
+bun run Skills/muninndb-setup/scripts/muninn.ts recall "what do I know about this project"
+
+# Activate context (get relevant memories for current task)
+bun run Skills/muninndb-setup/scripts/muninn.ts activate "working on StreamLeap Studio"
+
+# List all memories
+bun run Skills/muninndb-setup/scripts/muninn.ts list
+
+# Check status
+bun run Skills/muninndb-setup/scripts/muninn.ts status
+```
+
+### Auto-Recall
+At the start of conversations, proactively recall relevant memories based on the user's request or project context.
+
+---
+
 ## Telegram Bot Warmup
 
-- To warm up the Telegram bot and prevent cold starts, ping: `https://georgeo.zo.space/api/telegram-webhook` with a GET request
-- This endpoint is designed for POST (webhook), but GET requests still wake the server
+- To warm up the Telegram bot and prevent cold starts, ping: `h`tl
 
 ## send_telegram_message Tool
 
